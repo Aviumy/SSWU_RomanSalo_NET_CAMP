@@ -47,14 +47,14 @@ namespace Home_task_1
                 _matrix[i, j] = value++;
                 visited.Add((i, j));
 
-                if (!IsNextIndexValid(i, j, direction))
+                if (!IsNextIndexValid(i, j))
                 {
-                    direction = ChangeDirection(direction);
+                    direction = ChangeDirection();
                 }
-                MoveAt(direction);
+                MoveAtCurrentDirection();
             }
 
-            bool IsNextIndexValid(int i, int j, char direction)
+            bool IsNextIndexValid(int i, int j)
             {
                 switch (direction)
                 {
@@ -70,7 +70,7 @@ namespace Home_task_1
                        !visited.Contains((i, j));
             }
 
-            char ChangeDirection(char direction)
+            char ChangeDirection()
             {
                 return direction switch
                 {
@@ -82,7 +82,7 @@ namespace Home_task_1
                 };
             }
 
-            void MoveAt(char direction)
+            void MoveAtCurrentDirection()
             {
                 switch (direction)
                 {
