@@ -9,6 +9,12 @@ namespace Home_task_1
 {
     internal class SpiralMatrix
     {
+        public enum Direction
+        {
+            CounterClockwise,
+            Clockwise,
+        }
+
         public readonly int rows;
         public readonly int cols;
 
@@ -35,10 +41,10 @@ namespace Home_task_1
             return sb.ToString();
         }
 
-        public void Fill()
+        public void Fill(Direction direction = Direction.CounterClockwise)
         {
             List<(int, int)> visited = new List<(int, int)>();
-            char direction = 'v';
+            char pointer = (direction == Direction.CounterClockwise) ? 'v' : '>';
             int value = 1;
             int i = 0;
             int j = 0;
@@ -49,14 +55,14 @@ namespace Home_task_1
 
                 if (!IsNextIndexValid(i, j))
                 {
-                    direction = ChangeDirection();
+                    pointer = RotatePointer(direction);
                 }
-                MoveAtCurrentDirection();
+                FollowThePointer();
             }
 
             bool IsNextIndexValid(int i, int j)
             {
-                switch (direction)
+                switch (pointer)
                 {
                     case 'v': i++; break;
                     case '>': j++; break;
@@ -70,21 +76,21 @@ namespace Home_task_1
                        !visited.Contains((i, j));
             }
 
-            char ChangeDirection()
+            char RotatePointer(Direction direction)
             {
-                return direction switch
+                return pointer switch
                 {
-                    'v' => '>',
-                    '>' => '^',
-                    '^' => '<',
-                    '<' => 'v',
+                    'v' => direction == Direction.CounterClockwise ? '>' : '<',
+                    '>' => direction == Direction.CounterClockwise ? '^' : 'v',
+                    '^' => direction == Direction.CounterClockwise ? '<' : '>',
+                    '<' => direction == Direction.CounterClockwise ? 'v' : '^',
                     _ => throw new Exception("Invalid direction")
                 };
             }
 
-            void MoveAtCurrentDirection()
+            void FollowThePointer()
             {
-                switch (direction)
+                switch (pointer)
                 {
                     case 'v': i++; break;
                     case '>': j++; break;

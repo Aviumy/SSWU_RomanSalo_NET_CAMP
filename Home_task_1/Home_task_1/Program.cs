@@ -15,11 +15,18 @@
                 new SpiralMatrix(1, 1),
             };
 
+            Console.WriteLine("Counter clockwise results");
             foreach (var matrix in matrices)
             {
                 matrix.Fill();
                 Console.WriteLine(matrix);
-                Console.WriteLine();
+            }
+
+            Console.WriteLine("Clockwise results");
+            foreach (var matrix in matrices)
+            {
+                matrix.Fill(SpiralMatrix.Direction.Clockwise);
+                Console.WriteLine(matrix);
             }
         }
     }
