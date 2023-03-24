@@ -4,6 +4,11 @@
     {
         static void Main(string[] args)
         {
+            Task_1_1();
+        }
+
+        static void Task_1_1()
+        {
             SpiralMatrix[] matrices = new SpiralMatrix[]
             {
                 new SpiralMatrix(3, 4),

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Home_task_1
 {
@@ -60,6 +55,7 @@ namespace Home_task_1
                 FollowThePointer();
             }
 
+            #region helper_functions
             bool IsNextIndexValid(int i, int j)
             {
                 switch (pointer)
@@ -68,7 +64,7 @@ namespace Home_task_1
                     case '>': j++; break;
                     case '^': i--; break;
                     case '<': j--; break;
-                    default: throw new Exception("Invalid direction");
+                    default: throw new Exception("Invalid pointer symbol");
                 }
 
                 return i >= 0 && j >= 0 && 
@@ -84,7 +80,7 @@ namespace Home_task_1
                     '>' => direction == Direction.CounterClockwise ? '^' : 'v',
                     '^' => direction == Direction.CounterClockwise ? '<' : '>',
                     '<' => direction == Direction.CounterClockwise ? 'v' : '^',
-                    _ => throw new Exception("Invalid direction")
+                    _ => throw new Exception("Invalid pointer symbol")
                 };
             }
 
@@ -96,9 +92,10 @@ namespace Home_task_1
                     case '>': j++; break;
                     case '^': i--; break;
                     case '<': j--; break;
-                    default: throw new Exception("Invalid direction");
+                    default: throw new Exception("Invalid pointer symbol");
                 }
             }
+            #endregion
         }
     }
 }
