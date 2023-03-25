@@ -37,6 +37,18 @@
                     { 1, 2, 3 },
                     { 8, 1, 4 },
                 },
+
+                //new int[,]
+                //{
+                //    { -1, 2, 3 },
+                //    { 8, 1, 4 },
+                //},
+                //new int[,]
+                //{
+                //    { 100, 2, 3 },
+                //    { 8, 1, 4 },
+                //},
+                //new int[0, 0],
             };
 
             var images = matrices.Select(x => new Image(x)).ToArray();

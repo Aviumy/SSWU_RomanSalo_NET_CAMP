@@ -13,12 +13,16 @@ namespace Home_task_1
         {
             rows = matrix.GetLength(0);
             cols = matrix.GetLength(1);
+            if (rows == 0 || cols == 0)
+                throw new ArgumentException("Image width or height should not be zero.");
             _image = new int[rows, cols];
 
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols; j++)
                 {
+                    if (matrix[i, j] < 0 || matrix[i, j] > 16)
+                        throw new ArgumentException("Color values must be in the interval of [0; 16] (both inclusive).");
                     _image[i, j] = matrix[i, j];
                 }
             }
