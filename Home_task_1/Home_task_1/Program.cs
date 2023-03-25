@@ -29,6 +29,10 @@
             };
             Cube cube1 = new Cube(pieces1);
             Console.WriteLine(cube1.FindThroughHoles());
+            foreach (var hole in cube1.holeCoords)
+            {
+                Console.WriteLine($"{hole.Start} --- {hole.End}");
+            }
         }
     }
 }

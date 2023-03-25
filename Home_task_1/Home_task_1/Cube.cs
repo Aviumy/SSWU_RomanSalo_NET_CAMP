@@ -3,7 +3,11 @@
     internal class Cube
     {
         public readonly int size;
+
         private byte[,,] _pieces;
+
+        public int holes { get; private set; }
+        public List<HoleCoords> holeCoords { get; private set; }
 
         public Cube(byte[,,] pieces)
         {
@@ -19,11 +23,13 @@
                     }
                 }
             }
+            holes = 0;
+            holeCoords = new List<HoleCoords>();
         }
 
         public int FindThroughHoles()
         {
-            int holes = 0;
+            holes = 0;
             holes += FindFrontThroughHoles();
             holes += FindSideThroughHoles();
             holes += FindUpperThroughHoles();
@@ -38,6 +44,7 @@
                 for (int j = 0; j < size; j++)
                 {
                     bool isHoleThere = true;
+                    HoleCoords hole = new HoleCoords { Start = (0, j, i) };
                     for (int k = 0; k < size; k++)
                     {
                         if (_pieces[k,j,i] == 1)
@@ -46,7 +53,12 @@
                             break;
                         }
                     }
-                    holes += Convert.ToInt32(isHoleThere);
+                    if (isHoleThere)
+                    {
+                        holes++;
+                        hole.End = (size - 1, j, i);
+                        holeCoords.Add(hole);
+                    }
                 }
             }
             return holes;
@@ -60,6 +72,7 @@
                 for (int j = 0; j < size; j++)
                 {
                     bool isHoleThere = true;
+                    HoleCoords hole = new HoleCoords { Start = (i, j, 0) };
                     for (int k = 0; k < size; k++)
                     {
                         if (_pieces[i, j, k] == 1)
@@ -68,7 +81,12 @@
                             break;
                         }
                     }
-                    holes += Convert.ToInt32(isHoleThere);
+                    if (isHoleThere)
+                    {
+                        holes++;
+                        hole.End = (i, j, size - 1);
+                        holeCoords.Add(hole);
+                    }
                 }
             }
             return holes;
@@ -82,6 +100,7 @@
                 for (int j = 0; j < size; j++)
                 {
                     bool isHoleThere = true;
+                    HoleCoords hole = new HoleCoords { Start = (i, 0, j) };
                     for (int k = 0; k < size; k++)
                     {
                         if (_pieces[i, k, j] == 1)
@@ -90,7 +109,12 @@
                             break;
                         }
                     }
-                    holes += Convert.ToInt32(isHoleThere);
+                    if (isHoleThere)
+                    {
+                        holes++;
+                        hole.End = (i, size - 1, j);
+                        holeCoords.Add(hole);
+                    }
                 }
             }
             return holes;
