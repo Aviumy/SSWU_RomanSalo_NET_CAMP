@@ -17,6 +17,11 @@ namespace Home_task_1
 
         public SpiralMatrix(int rows, int cols)
         {
+            if (rows <= 0)
+                throw new ArgumentException("Number of rows must be a positive non-zero integer.");
+            if (cols <= 0)
+                throw new ArgumentException("Number of columns must be a positive non-zero integer.");
+
             this.rows = rows;
             this.cols = cols;
             _matrix = new int[rows, cols];
