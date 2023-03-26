@@ -2,13 +2,14 @@
 
 namespace Home_task_1
 {
+    public enum Direction
+    {
+        CounterClockwise,
+        Clockwise,
+    }
+
     internal class SpiralMatrix
     {
-        public enum Direction
-        {
-            CounterClockwise,
-            Clockwise,
-        }
 
         public readonly int rows;
         public readonly int cols;
