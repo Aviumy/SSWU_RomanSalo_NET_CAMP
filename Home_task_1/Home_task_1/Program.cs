@@ -9,7 +9,7 @@
 
         static void Task_1_1()
         {
-            SpiralMatrix[] matrices = new SpiralMatrix[]
+            /*SpiralMatrix[] matrices = new SpiralMatrix[]
             {
                 new SpiralMatrix(3, 4),
                 new SpiralMatrix(7, 5),
@@ -32,7 +32,19 @@
             {
                 matrix.Fill(SpiralMatrix.Direction.Clockwise);
                 Console.WriteLine(matrix);
-            }
+			}*/
+
+            Console.WriteLine("Enter numbers of rows: ");
+            int rows = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter numbers of columns: ");
+            int cols = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+            SpiralMatrix matrix = new SpiralMatrix(rows, cols);
+            matrix.Fill();
+            Console.WriteLine(matrix);
+            matrix.Fill(SpiralMatrix.Direction.Clockwise);
+            Console.WriteLine(matrix);
         }
     }
 }
