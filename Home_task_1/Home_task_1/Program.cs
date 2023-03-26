@@ -30,7 +30,7 @@
             Console.WriteLine("Clockwise results");
             foreach (var matrix in matrices)
             {
-                matrix.Fill(SpiralMatrix.Direction.Clockwise);
+                matrix.Fill(Direction.Clockwise);
                 Console.WriteLine(matrix);
 			}*/
 
@@ -43,7 +43,7 @@
             SpiralMatrix matrix = new SpiralMatrix(rows, cols);
             matrix.Fill();
             Console.WriteLine(matrix);
-            matrix.Fill(SpiralMatrix.Direction.Clockwise);
+            matrix.Fill(Direction.Clockwise);
             Console.WriteLine(matrix);
         }
     }
