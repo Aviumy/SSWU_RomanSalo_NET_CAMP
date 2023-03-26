@@ -71,12 +71,7 @@ namespace Home_task_1
                     {
                         if (current.Length > longest.Length)
                         {
-                            longest = new LineInfo(
-                                current.Color,
-                                current.Start,
-                                current.End,
-                                current.Length
-                            );
+                            longest = current;
                         }
 
                         current = new LineInfo(
@@ -90,12 +85,7 @@ namespace Home_task_1
 
                 if (current.Length > longest.Length)
                 {
-                    longest = new LineInfo(
-                        current.Color,
-                        current.Start,
-                        current.End,
-                        current.Length
-                    );
+                    longest = current;
                 }
             }
 

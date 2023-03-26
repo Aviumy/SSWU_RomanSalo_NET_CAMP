@@ -1,6 +1,6 @@
 ﻿namespace Home_task_1
 {
-    internal class LineInfo
+    internal struct LineInfo
     {
         public int Color { get; set; }
         public (int, int) Start { get; set; }
