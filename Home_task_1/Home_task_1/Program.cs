@@ -1,7 +1,7 @@
 ﻿namespace Home_task_1
 {
     internal class Program
-    {
+    {//Вітаю. Перше завдання по створенню репозиторію Ви виконали.
         static void Main(string[] args)
         {
             Task_1_1();
