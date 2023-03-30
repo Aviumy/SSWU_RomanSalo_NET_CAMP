@@ -4,15 +4,38 @@ namespace Home_task_2
 {
     public abstract class WaterTower
     {
-        private readonly double _maxAmount;
+        private double _maxAmount;
         private double _currentAmount;
-
         private Pump _pump;
+
+        public double MaxAmount
+        {
+            get => _maxAmount;
+            private set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Maximum water amount can not be less or equal 0.");
+                else
+                    _maxAmount = value;
+            }
+        }
+
+        public double CurrentAmount
+        {
+            get => _currentAmount;
+            private set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Water amount can not be less than 0.");
+                else
+                    _currentAmount = Math.Min(value, _maxAmount);
+            }
+        }
 
         public WaterTower(double maxAmount, Pump pump)
         {
-            _maxAmount = maxAmount;
-            _currentAmount = 0;
+            MaxAmount = maxAmount;
+            CurrentAmount = 0;
             _pump = pump;
         }
 

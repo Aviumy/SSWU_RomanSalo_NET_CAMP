@@ -6,8 +6,19 @@ namespace Home_task_2
     {
         private readonly long _id;
         private double _consumption;
-
         private WaterTower _tower;
+
+        public double Consumption
+        {
+            get => _consumption;
+            private set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "User's water consumption can not be less than 0.");
+                else
+                    _consumption = value;
+            }
+        }
 
         public User(double consumption, WaterTower tower)
         {
