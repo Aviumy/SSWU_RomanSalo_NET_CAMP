@@ -18,6 +18,8 @@ namespace Home_task_2
             }
         }
 
+        public bool IsOn { get; private set; }
+
         public Pump(double power)
         {
             Power = power;
@@ -29,5 +31,9 @@ namespace Home_task_2
             sb.AppendLine($"Power: {Power}");
             return sb.ToString();
         }
+
+        public abstract void On();
+
+        public abstract void Off();
     }
 }
