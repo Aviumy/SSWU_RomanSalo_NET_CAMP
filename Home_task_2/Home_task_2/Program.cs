@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var pump = new Pump(20);
+            var tower = new WaterTower(100, pump);
+            var user = new User(10, tower);
+
+            var simulator = new Simulator(pump, tower, user);
+            simulator.Simulate();
         }
     }
 }
