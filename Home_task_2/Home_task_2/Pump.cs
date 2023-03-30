@@ -2,7 +2,7 @@
 
 namespace Home_task_2
 {
-    public class Pump
+    public abstract class Pump
     {
         public double Power { get; private set; }
 

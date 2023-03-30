@@ -2,7 +2,7 @@
 
 namespace Home_task_2
 {
-    public class WaterTower
+    public abstract class WaterTower
     {
         private readonly double _maxAmount;
         private double _currentAmount;
@@ -24,44 +24,12 @@ namespace Home_task_2
             return sb.ToString();
         }
 
-        public void IncreaseAmount()
-        {
-            if (_currentAmount + _pump.Power > _maxAmount)
-            {
-                _currentAmount = _maxAmount;
-                Console.WriteLine("Max water amount reached!");
-            }
-            else
-            {
-                _currentAmount += _pump.Power;
-            }
-        }
+        public abstract void IncreaseAmount();
 
-        public void DecreaseAmount(double amount)
-        {
-            if (_currentAmount == 0)
-            {
-                Console.WriteLine("There is no water!");
-            }
-            else if (_currentAmount < amount)
-            {
-                _currentAmount = 0;
-                Console.WriteLine("Water is over!");
-            }
-            else
-            {
-                _currentAmount -= amount;
-            }
-        }
+        public abstract void DecreaseAmount(double amount);
 
-        public bool IsEmpty()
-        {
-            return _currentAmount == 0;
-        }
+        public abstract bool IsEmpty();
 
-        public bool IsFull()
-        {
-            return _currentAmount == _maxAmount;
-        }
+        public abstract bool IsFull();
     }
 }
