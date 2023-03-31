@@ -4,7 +4,31 @@
     {
         static void Main(string[] args)
         {
-            Task3_2b();
+            Task3_1b();
+            //Task3_2b();
+        }
+
+        static void Task3_1b()
+        {
+            (string text, string substr)[] testcases =
+            {
+                ("one two three one two", "one"),
+                ("one two three one two", "three"),
+                ("one two three one 4", "4"),
+                ("there's no word", "to match"),
+                ("xxxxxxxxxxx", "x"),
+                ("xxxxxxxxxxx", "xx"),
+                ("oo", "oo"),
+                ("blank substr", ""),
+                ("1", ""),
+                ("", "blank text"),
+                ("", ""),
+            };
+
+            foreach (var test in testcases)
+            {
+                Console.WriteLine(TextUtils.IndexOfSecondEntry(test.text, test.substr));
+            }
         }
 
         static void Task3_2b()
