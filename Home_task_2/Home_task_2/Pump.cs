@@ -23,6 +23,7 @@ namespace Home_task_2
         public Pump(double power)
         {
             Power = power;
+            IsOn = false;
         }
 
         public override string ToString()

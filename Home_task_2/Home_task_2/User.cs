@@ -6,7 +6,7 @@ namespace Home_task_2
     {
         private readonly long _id;
         private double _consumption;
-        private WaterTower _tower;
+        private WaterSystem _waterSystem;
 
         public double Consumption
         {
@@ -20,11 +20,11 @@ namespace Home_task_2
             }
         }
 
-        public User(double consumption, WaterTower tower)
+        public User(double consumption, WaterSystem waterSystem)
         {
             _id = DateTime.Now.Ticks;
             _consumption = consumption;
-            _tower = tower;
+            _waterSystem = waterSystem;
         }
 
         public override string ToString()

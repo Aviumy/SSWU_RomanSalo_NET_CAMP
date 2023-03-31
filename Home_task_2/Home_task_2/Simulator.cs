@@ -2,19 +2,18 @@
 {
     public class Simulator
     {
-        private readonly Pump _pump;
         private readonly WaterTower _tower;
-        private readonly User _user;
+        private readonly List<User> _users;
 
-        public Simulator(Pump pump, WaterTower tower, User user)
+        public Simulator(WaterTower tower, List<User> users)
         {
-            _pump = pump;
             _tower = tower;
-            _user = user;
+            _users = users.Select(x => x).ToList();
         }
 
         public void Simulate() 
         {
+
         }
     }
 }

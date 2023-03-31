@@ -6,7 +6,7 @@ namespace Home_task_2
     {
         private double _maxAmount;
         private double _currentAmount;
-        private Pump _pump;
+        private Pump? _pump;
 
         public double MaxAmount
         {
@@ -30,6 +30,13 @@ namespace Home_task_2
                 else
                     _currentAmount = Math.Min(value, _maxAmount);
             }
+        }
+
+        public WaterTower(double maxAmount)
+        {
+            MaxAmount = maxAmount;
+            CurrentAmount = 0;
+            _pump = null;
         }
 
         public WaterTower(double maxAmount, Pump pump)
@@ -65,6 +72,16 @@ namespace Home_task_2
         public bool IsFull()
         {
             throw new NotImplementedException();
+        }
+
+        public void InstallPump(Pump pump)
+        {
+
+        }
+
+        public void RemovePump()
+        {
+
         }
     }
 }
