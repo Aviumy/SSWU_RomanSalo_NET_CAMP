@@ -25,5 +25,28 @@
             }
             return count;
         }
+
+        public static string ReplaceDoublingLetterWordsWith(string text, string strToReplace)
+        {
+            var words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < words.Length; i++)
+            {
+                bool hasDoubling = false;
+                for (int j = 0; j < words[i].Length - 1; j++)
+                {
+                    if (words[i].ToLowerInvariant()[j] == words[i].ToLowerInvariant()[j + 1])
+                    {
+                        hasDoubling = true;
+                        break;
+                    }
+                }
+
+                if (hasDoubling)
+                {
+                    words[i] = strToReplace;
+                }
+            }
+            return string.Join(' ', words);
+        }
     }
 }
