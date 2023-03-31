@@ -2,7 +2,7 @@
 
 namespace Home_task_2
 {
-    public abstract class WaterTower
+    public class WaterTower
     {
         private double _maxAmount;
         private double _currentAmount;
@@ -47,12 +47,24 @@ namespace Home_task_2
             return sb.ToString();
         }
 
-        public abstract void IncreaseAmount();
+        public void IncreaseAmount()
+        {
 
-        public abstract void DecreaseAmount(double amount);
+        }
 
-        public abstract bool IsEmpty();
+        public void DecreaseAmount(double amount)
+        {
 
-        public abstract bool IsFull();
+        }
+
+        public bool IsEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFull()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

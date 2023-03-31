@@ -1,6 +1,6 @@
 ﻿namespace Home_task_2
 {
-    public abstract class Simulator
+    public class Simulator
     {
         private readonly Pump _pump;
         private readonly WaterTower _tower;
@@ -13,6 +13,8 @@
             _user = user;
         }
 
-        public abstract void Simulate();
+        public void Simulate() 
+        {
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Home_task_2
 {
-    public abstract class Pump
+    public class Pump
     {
         private double _power;
 
@@ -32,8 +32,14 @@ namespace Home_task_2
             return sb.ToString();
         }
 
-        public abstract void On();
+        public void On()
+        {
 
-        public abstract void Off();
+        }
+
+        public void Off()
+        {
+
+        }
     }
 }

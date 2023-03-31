@@ -2,7 +2,7 @@
 
 namespace Home_task_2
 {
-    public abstract class User
+    public class User
     {
         private readonly long _id;
         private double _consumption;
@@ -35,6 +35,9 @@ namespace Home_task_2
             return sb.ToString();
         }
 
-        public abstract void UseWater();
+        public void UseWater()
+        {
+
+        }
     }
 }
