@@ -9,7 +9,7 @@
         }
 
         static void Task_1_1()
-        {
+        {// треба перехоплювати можливі винятки
             /*SpiralMatrix[] matrices = new SpiralMatrix[]
             {
                 new SpiralMatrix(3, 4),
