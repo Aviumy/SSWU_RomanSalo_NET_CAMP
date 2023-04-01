@@ -43,7 +43,7 @@ namespace Home_task_1
         }
 
         public void Fill(Direction direction = Direction.CounterClockwise)
-        {
+        {//Дуже не бажано такий підхід застосовувати для великих матриць. Ви витрачаєте зайву пам'ять, хоча можна було б уникнути цього
             List<(int, int)> visited = new List<(int, int)>();
             char pointer = (direction == Direction.CounterClockwise) ? 'v' : '>';
             int value = 1;
@@ -89,7 +89,7 @@ namespace Home_task_1
                     _ => throw new Exception("Invalid pointer symbol")
                 };
             }
-
+// Метод-красунчик))))
             void FollowThePointer()
             {
                 switch (pointer)
