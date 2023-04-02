@@ -127,7 +127,7 @@
             int holes = 0;
             for (int j = 0; j < size; j++)
             {
-                for (int k = 0; k < size; k++)
+                for (int k = 1; k < size; k++)
                 {
                     bool isHoleThere = true;
                     HoleCoords hole = new HoleCoords { Start = (0, j, k) };
@@ -149,7 +149,7 @@
                     }
                 }
 
-                for (int i = 1; i < size; i++)
+                for (int i = 1; i < size - 1; i++)
                 {
                     bool isHoleThere = true;
                     HoleCoords hole = new HoleCoords { Start = (i, j, size - 1) };
@@ -179,7 +179,7 @@
             int holes = 0;
             for (int j = 0; j < size; j++)
             {
-                for (int k = size - 1; k >= 0; k--)
+                for (int k = size - 2; k >= 0; k--)
                 {
                     bool isHoleThere = true;
                     HoleCoords hole = new HoleCoords { Start = (0, j, k) };
@@ -201,7 +201,7 @@
                     }
                 }
 
-                for (int i = 1; i < size; i++)
+                for (int i = 1; i < size - 1; i++)
                 {
                     bool isHoleThere = true;
                     HoleCoords hole = new HoleCoords { Start = (i, j, 0) };
