@@ -41,15 +41,15 @@
         private int FindFrontThroughHoles()
         {
             int holes = 0;
-            for (int i = 0; i < size; i++)
+            for (int k = 0; k < size; k++)
             {
                 for (int j = 0; j < size; j++)
                 {
                     bool isHoleThere = true;
-                    HoleCoords hole = new HoleCoords { Start = (0, j, i) };
-                    for (int k = 0; k < size; k++)
+                    HoleCoords hole = new HoleCoords { Start = (0, j, k) };
+                    for (int i = 0; i < size; i++)
                     {
-                        if (_pieces[k,j,i] == 1)
+                        if (_pieces[i, j, k] == 1)
                         {
                             isHoleThere = false;
                             break;
@@ -58,7 +58,7 @@
                     if (isHoleThere)
                     {
                         holes++;
-                        hole.End = (size - 1, j, i);
+                        hole.End = (size - 1, j, k);
                         holeCoords.Add(hole);
                     }
                 }
@@ -99,13 +99,13 @@
             int holes = 0;
             for (int i = 0; i < size; i++)
             {
-                for (int j = 0; j < size; j++)
+                for (int k = 0; k < size; k++)
                 {
                     bool isHoleThere = true;
-                    HoleCoords hole = new HoleCoords { Start = (i, 0, j) };
-                    for (int k = 0; k < size; k++)
+                    HoleCoords hole = new HoleCoords { Start = (i, 0, k) };
+                    for (int j = 0; j < size; j++)
                     {
-                        if (_pieces[i, k, j] == 1)
+                        if (_pieces[i, j, k] == 1)
                         {
                             isHoleThere = false;
                             break;
@@ -114,7 +114,7 @@
                     if (isHoleThere)
                     {
                         holes++;
-                        hole.End = (i, size - 1, j);
+                        hole.End = (i, size - 1, k);
                         holeCoords.Add(hole);
                     }
                 }
