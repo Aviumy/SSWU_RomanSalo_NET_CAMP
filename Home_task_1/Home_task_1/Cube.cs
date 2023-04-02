@@ -11,6 +11,11 @@
 
         public Cube(byte[,,] pieces)
         {
+            if (pieces.GetLength(0) != pieces.GetLength(1) || pieces.GetLength(0) != pieces.GetLength(2))
+            {
+                throw new ArgumentException("Each array's dimension must have equal size (cube's sides must have equal length)");
+            }
+
             size = pieces.GetLength(0);
             _pieces = new byte[size, size, size];
             for (int i = 0; i < size; i++)
