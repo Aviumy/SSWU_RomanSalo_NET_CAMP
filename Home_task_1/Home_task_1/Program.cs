@@ -4,8 +4,9 @@
     {//Вітаю. Перше завдання по створенню репозиторію Ви виконали.
         static void Main(string[] args)
         {
-            Task_1_1();
+            //Task_1_1();
             // Task_1_2();
+            Task_1_3();
         }
 
         static void Task_1_1()
@@ -99,6 +100,34 @@
                 Console.WriteLine(image);
                 Console.WriteLine(image.FindLongestHorizontalLine());
                 Console.WriteLine();
+            }
+        }
+
+        static void Task_1_3()
+        {
+            byte[,,] pieces1 = new byte[,,]
+            {
+                {
+                    { 0,1,0 },
+                    { 1,1,1 },
+                    { 1,1,1 },
+                },
+                {
+                    { 1,1,1 },
+                    { 1,1,1 },
+                    { 1,1,1 },
+                },
+                {
+                    { 0,1,0 },
+                    { 1,1,1 },
+                    { 1,1,1 },
+                },
+            };
+            Cube cube1 = new Cube(pieces1);
+            Console.WriteLine(cube1.FindThroughHoles());
+            foreach (var hole in cube1.holeCoords)
+            {
+                Console.WriteLine($"{hole.Start} --- {hole.End}");
             }
         }
     }
