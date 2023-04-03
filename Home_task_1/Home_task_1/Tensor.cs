@@ -8,19 +8,16 @@ namespace Home_task_1
         public readonly int size;
 
         private int[] _data;
+        private TensorValidator _validator;
 
         public Tensor(int dimensions, int size)
         {
-            if (dimensions < 1)
-            {
-                throw new ArgumentException();
-            }
-            if (size < 1)
-            {
-                throw new ArgumentException();
-            }
             this.dimensions = dimensions;
             this.size = size;
+
+            _validator = new TensorValidator();
+            _validator.ValidateCreation(this);
+
             _data = new int[(int)Math.Pow(size, dimensions - 1)];
         }
 
@@ -44,14 +41,7 @@ namespace Home_task_1
 
         public int GetElement(params int[] indices)
         {
-            if (indices.Length != dimensions - 1)
-            {
-                throw new ArgumentException();
-            }
-            if (indices.Any(x => x < 0 || x >= size))
-            {
-                throw new ArgumentException();
-            }
+            _validator.ValidateIndices(this, indices);
 
             int index = 0;
             for (int i = 0, dim = dimensions - 2;
@@ -65,14 +55,7 @@ namespace Home_task_1
 
         public void SetElement(int value, params int[] indices)
         {
-            if (indices.Length != dimensions - 1)
-            {
-                throw new ArgumentException();
-            }
-            if (indices.Any(x => x < 0 || x >= size))
-            {
-                throw new ArgumentException();
-            }
+            _validator.ValidateIndices(this, indices);
 
             int index = 0;
             for (int i = 0, dim = dimensions - 2;

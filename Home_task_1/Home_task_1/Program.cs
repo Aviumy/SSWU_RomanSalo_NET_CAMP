@@ -156,6 +156,9 @@
             Console.WriteLine();
 
             //Console.WriteLine(tensors[3].GetElement(99, tensors[3].size, -1));
+            //Console.WriteLine(tensors[3].GetElement(99, 0, 0));
+            //Console.WriteLine(tensors[3].GetElement(0, tensors[3].size, 0));
+            //Console.WriteLine(tensors[3].GetElement(0, 0, -1));
 
             tensors[3].SetElement(value: 99, 1, 1, 1);
             Console.WriteLine("Edited 4 dimensions tensor");
