@@ -6,7 +6,8 @@
         {
             //Task_1_1();
             // Task_1_2();
-            Task_1_3();
+            //Task_1_3();
+            Task_1_4();
         }
 
         static void Task_1_1()
@@ -128,6 +129,79 @@
             foreach (var hole in cube1.holeCoords)
             {
                 Console.WriteLine($"{hole.Start} --- {hole.End}");
+            }
+        }
+
+        static void Task_1_4()
+        {
+            Tensor[] tensors = new Tensor[]
+            {
+                new Tensor(1, 3),
+                new Tensor(2, 3),
+                new Tensor(3, 3),
+                new Tensor(4, 3),
+            };
+
+            for (int i = 0; i < tensors.Length; i++)
+            {
+                tensors[i].FillRandom(0, 9);
+            }
+
+            Console.WriteLine("1 dimension (number)");
+            Console.WriteLine(tensors[0].GetElement());
+            Console.WriteLine();
+
+            Console.WriteLine("2 dimensions (array)");
+            for (int i = 0; i < tensors[1].size; i++)
+            {
+                Console.Write($"{tensors[1].GetElement(i)} ");
+            }
+            Console.WriteLine("\n");
+
+            Console.WriteLine("3 dimensions (matrix)");
+            for (int i = 0; i < tensors[2].size; i++)
+            {
+                for (int j = 0; j < tensors[2].size; j++)
+                {
+                    Console.Write($"{tensors[2].GetElement(i, j)} ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("4 dimensions (matrix array)");
+            for (int i = 0; i < tensors[3].size; i++)
+            {
+                for (int j = 0; j < tensors[3].size; j++)
+                {
+                    for (int k = 0; k < tensors[3].size; k++)
+                    {
+                        Console.Write($"{tensors[3].GetElement(new int[] { i, j, k })} ");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            //Console.WriteLine(tensors[3].GetElement(99, tensors[3].size, -1));
+            //Console.WriteLine(tensors[3].GetElement(99, 0, 0));
+            //Console.WriteLine(tensors[3].GetElement(0, tensors[3].size, 0));
+            //Console.WriteLine(tensors[3].GetElement(0, 0, -1));
+
+            tensors[3].SetElement(value: 99, 1, 1, 1);
+            Console.WriteLine("Edited 4 dimensions tensor");
+            for (int i = 0; i < tensors[3].size; i++)
+            {
+                for (int j = 0; j < tensors[3].size; j++)
+                {
+                    for (int k = 0; k < tensors[3].size; k++)
+                    {
+                        Console.Write($"{tensors[3].GetElement(new int[] { i, j, k })} ");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
             }
         }
     }
