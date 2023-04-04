@@ -4,13 +4,15 @@
     {
         static void Main(string[] args)
         {
-            //Task3_1b();
-            //Task3_2b();
+            Task3_1b();
+            Task3_2b();
             Task3_3b();
         }
 
         static void Task3_1b()
         {
+            TextUtils textUtils = new TextUtils();
+
             (string text, string substr)[] testcases =
             {
                 ("one two three one two", "one"),
@@ -28,12 +30,15 @@
 
             foreach (var test in testcases)
             {
-                Console.WriteLine(TextUtils.IndexOfSecondEntry(test.text, test.substr));
+                textUtils.Text = test.text;
+                Console.WriteLine(textUtils.IndexOfSecondEntry(test.substr));
             }
         }
 
         static void Task3_2b()
         {
+            TextUtils textUtils = new TextUtils();
+
             string[] texts =
             {
                 "What a Wonderful Day for coding",
@@ -47,12 +52,15 @@
 
             foreach (var text in texts)
             {
-                Console.WriteLine(TextUtils.CapitalizedWordsCount(text));
+                textUtils.Text = text;
+                Console.WriteLine(textUtils.CapitalizedWordsCount());
             }
         }
 
         static void Task3_3b()
         {
+            TextUtils textUtils = new TextUtils();
+
             (string text, string substr)[] testcases =
             {
                 ("wwords with doubllings", "sample"),
@@ -71,7 +79,8 @@
 
             foreach (var test in testcases)
             {
-                Console.WriteLine(TextUtils.ReplaceDoublingLetterWordsWith(test.text, test.substr));
+                textUtils.Text = test.text;
+                Console.WriteLine(textUtils.ReplaceDoublingLetterWordsWith(test.substr));
             }
         }
     }

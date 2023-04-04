@@ -2,19 +2,31 @@
 {
     public class TextUtils
     {
-        public static int? IndexOfSecondEntry(string text, string substr)
+        public string Text { get; set; }
+
+        public TextUtils()
         {
-            if (text == "" && substr == "")
+            Text = string.Empty;
+        }
+
+        public TextUtils(string text)
+        {
+            Text = text;
+        }
+
+        public int? IndexOfSecondEntry(string substr)
+        {
+            if (Text == "" && substr == "")
                 return null;
 
-            int firstIndex = text.IndexOf(substr);
-            int secondIndex = text.IndexOf(substr, firstIndex + 1);
+            int firstIndex = Text.IndexOf(substr);
+            int secondIndex = Text.IndexOf(substr, firstIndex + 1);
             return secondIndex == -1 ? null : secondIndex;
         }
 
-        public static int CapitalizedWordsCount(string text)
+        public int CapitalizedWordsCount()
         {
-            var words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var words = Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int count = 0;
             foreach (var word in words)
             {
@@ -26,9 +38,9 @@
             return count;
         }
 
-        public static string ReplaceDoublingLetterWordsWith(string text, string strToReplace)
+        public string ReplaceDoublingLetterWordsWith(string strToReplace)
         {
-            var words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var words = Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < words.Length; i++)
             {
                 bool hasDoubling = false;
