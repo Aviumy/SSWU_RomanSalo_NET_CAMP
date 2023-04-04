@@ -19,6 +19,8 @@
                 ("one two three one two", "three"),
                 ("one two three one 4", "4"),
                 ("there's no word", "to match"),
+                ("different REGISTER text", "t"),
+                ("different REGISTER TEXT", "t"),
                 ("xxxxxxxxxxx", "x"),
                 ("xxxxxxxxxxx", "xx"),
                 ("oo", "oo"),
