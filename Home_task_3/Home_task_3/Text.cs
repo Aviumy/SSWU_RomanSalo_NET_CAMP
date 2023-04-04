@@ -1,32 +1,32 @@
 ﻿namespace Home_task_3
 {
-    public class TextUtils
+    public class Text
     {
-        public string Text { get; set; }
+        public string RawText { get; set; }
 
-        public TextUtils()
+        public Text()
         {
-            Text = string.Empty;
+            RawText = string.Empty;
         }
 
-        public TextUtils(string text)
+        public Text(string text)
         {
-            Text = text;
+            RawText = text;
         }
 
         public int? IndexOfSecondEntry(string substr)
         {
-            if (Text == "" && substr == "")
+            if (RawText == "" && substr == "")
                 return null;
 
-            int firstIndex = Text.IndexOf(substr);
-            int secondIndex = Text.IndexOf(substr, firstIndex + 1);
+            int firstIndex = RawText.IndexOf(substr);
+            int secondIndex = RawText.IndexOf(substr, firstIndex + 1);
             return secondIndex == -1 ? null : secondIndex;
         }
 
         public int CapitalizedWordsCount()
         {
-            var words = Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var words = RawText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int count = 0;
             foreach (var word in words)
             {
@@ -40,7 +40,7 @@
 
         public string ReplaceDoublingLetterWordsWith(string strToReplace)
         {
-            var words = Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var words = RawText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < words.Length; i++)
             {
                 bool hasDoubling = false;

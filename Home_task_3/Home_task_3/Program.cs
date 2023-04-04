@@ -4,14 +4,14 @@
     {
         static void Main(string[] args)
         {
-            Task3_1b();
+            Task3_2a();
             Task3_2b();
-            Task3_3b();
+            Task3_2c();
         }
 
-        static void Task3_1b()
+        static void Task3_2a()
         {
-            TextUtils textUtils = new TextUtils();
+            Text text = new Text();
 
             (string text, string substr)[] testcases =
             {
@@ -28,18 +28,18 @@
                 ("", ""),
             };
 
-            foreach (var test in testcases)
+            foreach (var testcase in testcases)
             {
-                textUtils.Text = test.text;
-                Console.WriteLine(textUtils.IndexOfSecondEntry(test.substr));
+                text.RawText = testcase.text;
+                Console.WriteLine(text.IndexOfSecondEntry(testcase.substr));
             }
         }
 
         static void Task3_2b()
         {
-            TextUtils textUtils = new TextUtils();
+            Text text = new Text();
 
-            string[] texts =
+            string[] testcases =
             {
                 "What a Wonderful Day for coding",
                 "some word another word",
@@ -50,16 +50,16 @@
                 "",
             };
 
-            foreach (var text in texts)
+            foreach (var testcase in testcases)
             {
-                textUtils.Text = text;
-                Console.WriteLine(textUtils.CapitalizedWordsCount());
+                text.RawText = testcase;
+                Console.WriteLine(text.CapitalizedWordsCount());
             }
         }
 
-        static void Task3_3b()
+        static void Task3_2c()
         {
-            TextUtils textUtils = new TextUtils();
+            Text text = new Text();
 
             (string text, string substr)[] testcases =
             {
@@ -77,10 +77,10 @@
                 ("     ", "whitespace test"),
             };
 
-            foreach (var test in testcases)
+            foreach (var testcase in testcases)
             {
-                textUtils.Text = test.text;
-                Console.WriteLine(textUtils.ReplaceDoublingLetterWordsWith(test.substr));
+                text.RawText = testcase.text;
+                Console.WriteLine(text.ReplaceDoublingLetterWordsWith(testcase.substr));
             }
         }
     }
