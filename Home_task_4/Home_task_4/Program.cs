@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Task_4_1();
+            //Task_4_1();
+            Task_4_2();
         }
 
         static void Task_4_1()
@@ -49,6 +50,45 @@
                 {
                     Console.WriteLine(sentence);
                 }
+            }
+        }
+
+        static void Task_4_2()
+        {
+            string text = """
+Дійсні електронні адреси
+simple@example.com
+very.common@example.com
+disposable.style.email.with+symbol@example.com
+other.email-with-hyphen@example.com
+fully-qualified-domain@example.com
+user.name+tag+sorting@example.com
+x@example.com
+example-indeed@strange-example.com
+admin@mailserver1
+example@s.example
+" "@example.org
+"john..doe"@example.org
+mailhost!username@example.org
+user%example.com@example.org
+
+Недійсні адреси електронної пошти
+Abc.example.com
+A@b@c@example.com
+a"b(c)d,e:f;g<h>i[j\k]l@example.com
+just"not"right@example.com
+this is"not\allowed@example.com
+this\ still\"not\\allowed@example.com
+1234567890123456789012345678901234567890123456789012345678901234+x@example.com
+i_like_underscore@but_its_not_allow_in_this_part.example.com
+""";
+
+            EmailFinder text1 = new EmailFinder(text);
+            var emails = text1.FindEmails();
+            Console.WriteLine("VALID EMAILS:");
+            foreach (var email in emails)
+            {
+                Console.WriteLine(email);
             }
         }
     }
