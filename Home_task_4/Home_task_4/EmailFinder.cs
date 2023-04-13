@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Home_task_4
+﻿namespace Home_task_4
 {
     internal class EmailFinder
     {
@@ -23,88 +21,13 @@ namespace Home_task_4
 
             foreach (var word in words)
             {
-                // Whether there is one '@'
                 if (Array.FindAll(word.ToCharArray(), x => x == '@').Length == 1)
                 {
                     int atIndex = word.IndexOf('@');
                     string localPart = word.Substring(0, atIndex);
                     string domain = word.Substring(atIndex + 1);
 
-                    // Check local part
-                    bool hasLocalPartIncorrectLength =
-                        localPart.Length == 0 ||
-                        localPart.Length > 64;
-
-                    bool hasLocalPartIncorrectPoints =
-                        localPart[0] == '.' ||
-                        localPart.Last() == '.' ||
-                        localPart.IndexOf("..") != -1;
-
-                    bool hasLocalPartForbiddenSymbol = false;
-                    for (int i = 0; i < localPart.Length; i++)
-                    {
-                        if (!(char.IsLetterOrDigit(localPart[i]) || IsAllowedLocalPartSymbol(localPart[i])))
-                        {
-                            hasLocalPartForbiddenSymbol = true;
-                            break;
-                        }
-                    }
-
-                    // Check domain
-                    bool hasDomainIncorrectLength =
-                        domain.Length == 0 ||
-                        domain.Length > 255;
-
-                    string[] subdomains = domain.Split('.');
-                    bool hasSubdomainIncorrectLength = false;
-                    bool hasSubdomainIncorrectHyphen = false;
-                    bool hasSubdomainForbiddenSymbol = false;
-                    foreach (var subdomain in subdomains)
-                    {
-                        if (subdomain.Length == 0 ||
-                            subdomain.Length > 63)
-                        {
-                            hasSubdomainIncorrectLength = true;
-                            break;
-                        };
-
-                        if (Array.FindAll(subdomain.ToCharArray(), x => x == '-').Length > 1 ||
-                            subdomain[0] == '-' ||
-                            subdomain.Last() == '-')
-                        {
-                            hasSubdomainIncorrectHyphen = true;
-                            break;
-                        }
-
-                        for (int i = 0; i < subdomain.Length; i++)
-                        {
-                            if (!(char.IsLetterOrDigit(subdomain[i]) || subdomain[i] == '-'))
-                            {
-                                hasSubdomainForbiddenSymbol = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    bool isLastSubdomainFullyNumeric = true;
-                    string lastSubdomain = subdomains.Last();
-                    for (int i = 0; i < lastSubdomain.Length; i++)
-                    {
-                        if (!char.IsDigit(lastSubdomain[i]))
-                        {
-                            isLastSubdomainFullyNumeric = false;
-                            break;
-                        }
-                    }
-
-                    if (!(hasLocalPartIncorrectLength ||
-                          hasLocalPartIncorrectPoints ||
-                          hasLocalPartForbiddenSymbol ||
-                          hasDomainIncorrectLength ||
-                          hasSubdomainIncorrectLength ||
-                          hasSubdomainIncorrectHyphen ||
-                          hasSubdomainForbiddenSymbol ||
-                          isLastSubdomainFullyNumeric))
+                    if (IsLocalPartValid(localPart) && IsDomainValid(domain))
                     {
                         emails.Add(word);
                     }
@@ -112,13 +35,104 @@ namespace Home_task_4
             }
 
             return emails.ToArray();
+        }
 
-            #region helperFuncs
-            bool IsAllowedLocalPartSymbol(char symbol)
+        private bool IsLocalPartValid(string localPart)
+        {
+            bool hasIncorrectLength =
+                    localPart.Length == 0 ||
+                    localPart.Length > 64;
+            if (hasIncorrectLength)
             {
-                return ".!#$%&'*+-/=?^_`{|}~".Contains(symbol);
+                return false;
             }
-            #endregion
+
+            bool hasIncorrectPoints =
+                localPart[0] == '.' ||
+                localPart.Last() == '.' ||
+                localPart.IndexOf("..") != -1;
+            if (hasIncorrectPoints)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < localPart.Length; i++)
+            {
+                if (!IsAllowedLocalPartSymbol(localPart[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsDomainValid(string domain)
+        {
+            bool hasIncorrectLength =
+                    domain.Length == 0 ||
+                    domain.Length > 255;
+            if (hasIncorrectLength)
+            {
+                return false;
+            }
+
+            string[] subdomains = domain.Split('.');
+            string lastSubdomain = subdomains.Last();
+            bool isLastSubdomainFullyNumeric = true;
+            for (int i = 0; i < lastSubdomain.Length; i++)
+            {
+                if (!char.IsDigit(lastSubdomain[i]))
+                {
+                    isLastSubdomainFullyNumeric = false;
+                    break;
+                }
+            }
+            if (isLastSubdomainFullyNumeric)
+            {
+                return false;
+            }
+
+            foreach (var subdomain in subdomains)
+            {
+                bool hasSubdomainIncorrectLength = 
+                    subdomain.Length == 0 ||
+                    subdomain.Length > 63;
+                if (hasSubdomainIncorrectLength)
+                {
+                    return false;
+                }
+
+                bool hasIncorrectHyphen =
+                    subdomain[0] == '-' ||
+                    subdomain.Last() == '-';
+                if (hasIncorrectHyphen)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < subdomain.Length; i++)
+                {
+                    if (!IsAllowedSubdomainSymbol(subdomain[i]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsAllowedLocalPartSymbol(char symbol)
+        {
+            return char.IsLetterOrDigit(symbol) ||
+                ".!#$%&'*+-/=?^_`{|}~".Contains(symbol);
+        }
+
+        private bool IsAllowedSubdomainSymbol(char symbol)
+        {
+            return symbol == '-' ||
+                char.IsLetterOrDigit(symbol);
         }
     }
 }
