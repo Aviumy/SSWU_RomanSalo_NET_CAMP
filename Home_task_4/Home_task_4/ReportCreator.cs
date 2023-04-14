@@ -38,13 +38,13 @@ namespace Home_task_4
                     string surname = values[2];
 
                     List<int> readings = new List<int>();
-                    for (int i = 3; i < 8; i++)
+                    for (int i = 3; i < 7; i++)
                     {
                         readings.Add(Convert.ToInt32(values[i]));
                     }
 
                     List<DateOnly> dates = new List<DateOnly>();
-                    for (int i = 8; i < values.Length; i++)
+                    for (int i = 7; i < values.Length; i++)
                     {
                         string[] dateValues = values[i].Split('.');
                         dates.Add(new DateOnly(
