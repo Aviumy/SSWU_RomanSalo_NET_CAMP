@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Task_4_1();
+            //Task_4_1();
+            Task_4_3();
         }
 
         static void Task_4_1()
@@ -50,6 +51,20 @@
                     Console.WriteLine(sentence);
                 }
             }
+        }
+
+        static void Task_4_3()
+        {
+            ReportCreator creator = new ReportCreator();
+            //creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
+            //Console.WriteLine(creator.CreateReportForAllFlats());
+            //Console.WriteLine(creator.CreateReportForOneFlat(2));
+            //Console.WriteLine(creator.FindGreatestDebtor());
+            //var flats = creator.FindFlatsWithNoEnergyUsed();
+            //foreach (int flat in flats)
+            //{
+            //    Console.WriteLine(flat + " ");
+            //}
         }
     }
 }
