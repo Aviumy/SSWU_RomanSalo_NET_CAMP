@@ -78,7 +78,18 @@ namespace Home_task_4
 
         public string FindGreatestDebtor()
         {
-            return "";
+            string surname = string.Empty;
+            double maxCost = 0;
+            foreach (var info in _flatsInfo)
+            {
+                double cost = (info.CounterReadings.Last() - info.CounterReadings[0]) * KwCost;
+                if (cost > maxCost)
+                {
+                    maxCost = cost;
+                    surname = info.Surname;
+                }
+            }
+            return surname;
         }
 
         public int[] FindFlatsWithNoEnergyUsed()

@@ -59,7 +59,7 @@
             creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
             //Console.WriteLine(creator.CreateReportForAllFlats());
             //Console.WriteLine(creator.CreateReportForOneFlat(2));
-            //Console.WriteLine(creator.FindGreatestDebtor());
+            Console.WriteLine("Найбільший боржник: " + creator.FindGreatestDebtor());
             //var flats = creator.FindFlatsWithNoEnergyUsed();
             //foreach (int flat in flats)
             //{
