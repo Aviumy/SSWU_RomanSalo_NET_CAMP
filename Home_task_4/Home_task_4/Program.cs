@@ -56,7 +56,7 @@
         static void Task_4_3()
         {
             ReportCreator creator = new ReportCreator();
-            //creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
+            creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
             //Console.WriteLine(creator.CreateReportForAllFlats());
             //Console.WriteLine(creator.CreateReportForOneFlat(2));
             //Console.WriteLine(creator.FindGreatestDebtor());
