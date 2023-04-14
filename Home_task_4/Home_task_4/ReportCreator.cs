@@ -32,12 +32,21 @@ namespace Home_task_4
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Parse dates of counter readings
-                    List<DateOnly> dates = new List<DateOnly>();
-                    var dateMathces = Regex.Matches(line, @"\d{2}\.\d{2}\.\d{4}").Select(x => x.ToString());
-                    foreach (string match in dateMathces)
+                    var values = line.Split("; ");
+                    int flatNumber = Convert.ToInt32(values[0]);
+                    string address = values[1];
+                    string surname = values[2];
+
+                    List<int> readings = new List<int>();
+                    for (int i = 3; i < 8; i++)
                     {
-                        string[] dateValues = match.Split('.');
+                        readings.Add(Convert.ToInt32(values[i]));
+                    }
+
+                    List<DateOnly> dates = new List<DateOnly>();
+                    for (int i = 8; i < values.Length; i++)
+                    {
+                        string[] dateValues = values[i].Split('.');
                         dates.Add(new DateOnly(
                             day: Convert.ToInt32(dateValues[0]),
                             month: Convert.ToInt32(dateValues[1]),
@@ -45,14 +54,11 @@ namespace Home_task_4
                         ));
                     }
 
-                    // Parse other values and create info object
-                    var values = line.Split("; ");
                     EnergyConsumptionInfo flatInfo = new EnergyConsumptionInfo(
-                        flatNumber: Convert.ToInt32(values[0]),
-                        address: values[1],
-                        surname: values[2],
-                        firstCounterValue: Convert.ToInt32(values[3]),
-                        lastCounterValue: Convert.ToInt32(values[4]),
+                        flatNumber: flatNumber,
+                        address: address,
+                        surname: surname,
+                        counterReadings: readings.ToArray(),
                         counterReadingDates: dates.ToArray()
                     );
                     _flatsInfo.Add(flatInfo);
