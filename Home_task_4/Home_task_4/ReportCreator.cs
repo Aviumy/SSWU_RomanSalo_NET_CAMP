@@ -94,7 +94,15 @@ namespace Home_task_4
 
         public int[] FindFlatsWithNoEnergyUsed()
         {
-            return new int[0];
+            List<int> flats = new List<int>();
+            foreach (var info in _flatsInfo)
+            {
+                if (info.CounterReadings.Last() - info.CounterReadings[0] == 0)
+                {
+                    flats.Add(info.FlatNumber);
+                }
+            }
+            return flats.ToArray();
         }
     }
 }

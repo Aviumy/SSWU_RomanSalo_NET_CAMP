@@ -60,11 +60,12 @@
             //Console.WriteLine(creator.CreateReportForAllFlats());
             //Console.WriteLine(creator.CreateReportForOneFlat(2));
             Console.WriteLine("Найбільший боржник: " + creator.FindGreatestDebtor());
-            //var flats = creator.FindFlatsWithNoEnergyUsed();
-            //foreach (int flat in flats)
-            //{
-            //    Console.WriteLine(flat + " ");
-            //}
+            var flats = creator.FindFlatsWithNoEnergyUsed();
+            Console.WriteLine("Номери квартир, в яких не використовували енергії:");
+            foreach (int flat in flats)
+            {
+                Console.Write(flat + " ");
+            }
         }
     }
 }
