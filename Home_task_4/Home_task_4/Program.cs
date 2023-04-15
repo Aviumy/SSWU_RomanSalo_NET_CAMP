@@ -61,11 +61,15 @@ namespace Home_task_4
 
             ReportCreator creator = new ReportCreator();
             creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
+
+            Console.WriteLine("ЗВІТ ПО ВСІХ КВАРТИРАХ");
             Console.WriteLine(creator.CreateReportForAllFlats());
-            //Console.WriteLine(creator.CreateReportForOneFlat(2));
+            Console.WriteLine("ЗВІТ ПО ОДНІЙ КВАРТИРІ");
+            Console.WriteLine(creator.CreateReportForOneFlat(2));
+
             Console.WriteLine("Найбільший боржник: " + creator.FindGreatestDebtor());
             var flats = creator.FindFlatsWithNoEnergyUsed();
-            Console.WriteLine("Номери квартир, в яких не використовували енергії:");
+            Console.WriteLine("\nНомери квартир, в яких не використовували енергії:");
             foreach (int flat in flats)
             {
                 Console.Write(flat + " ");
