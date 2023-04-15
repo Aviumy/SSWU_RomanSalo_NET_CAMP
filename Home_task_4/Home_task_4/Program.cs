@@ -1,4 +1,6 @@
-﻿namespace Home_task_4
+﻿using System.Text;
+
+namespace Home_task_4
 {
     internal class Program
     {
@@ -55,9 +57,11 @@
 
         static void Task_4_3()
         {
+            Console.OutputEncoding = Encoding.Unicode;
+
             ReportCreator creator = new ReportCreator();
             creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
-            //Console.WriteLine(creator.CreateReportForAllFlats());
+            Console.WriteLine(creator.CreateReportForAllFlats());
             //Console.WriteLine(creator.CreateReportForOneFlat(2));
             Console.WriteLine("Найбільший боржник: " + creator.FindGreatestDebtor());
             var flats = creator.FindFlatsWithNoEnergyUsed();
