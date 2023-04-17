@@ -1,11 +1,14 @@
-﻿namespace Home_task_4
+﻿using System.Text;
+
+namespace Home_task_4
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //Task_4_1();
+            Task_4_1();
             Task_4_2();
+            Task_4_3();
         }
 
         static void Task_4_1()
@@ -95,6 +98,27 @@ i_like_underscore@but_its_not_allow_in_this_part.example.com
             foreach (var email in invalidEmails)
             {
                 Console.WriteLine(email);
+            }
+        }
+
+        static void Task_4_3()
+        {
+            Console.OutputEncoding = Encoding.Unicode;
+
+            EnergyUsageInfoService service = new EnergyUsageInfoService(@"..\..\..\..\EnergyInfo.txt");
+            EnergyUsageInfoReportCreator reportCreator = new EnergyUsageInfoReportCreator(service);
+
+            Console.WriteLine("ЗВІТ ПО ВСІХ КВАРТИРАХ");
+            Console.WriteLine(reportCreator.CreateForAllFlats());
+            Console.WriteLine("ЗВІТ ПО ОДНІЙ КВАРТИРІ");
+            Console.WriteLine(reportCreator.CreateForOneFlat(2));
+
+            Console.WriteLine("Найбільший боржник: " + service.FindGreatestDebtor());
+            var flats = service.FindFlatsWithNoEnergyUsed();
+            Console.WriteLine("\nНомери квартир, в яких не використовували енергії:");
+            foreach (int flat in flats)
+            {
+                Console.Write(flat + " ");
             }
         }
     }
