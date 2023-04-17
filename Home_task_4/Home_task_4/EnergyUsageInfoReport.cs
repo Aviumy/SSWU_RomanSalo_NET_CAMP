@@ -5,9 +5,6 @@ namespace Home_task_4
 {
     internal class EnergyUsageInfoReport
     {
-        public int FlatsCount { get; private set; }
-        public int QuarterNumber { get; private set; }
-
         private EnergyUsageInfoService _service;
 
         public EnergyUsageInfoReport(EnergyUsageInfoService service)
@@ -17,57 +14,66 @@ namespace Home_task_4
 
         public string CreateForAllFlats()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder table = new StringBuilder();
             CultureInfo.CurrentCulture = new CultureInfo("uk-UA");
+            var flatsInfo = _service.GetAllFlatsInfo();
 
-            for (int i = 0; i < 3; i++)
+            int month = (_service.QuarterNumber - 1) * 3 + 1;
+            for (int i = month; i <= month + 2; i++)
             {
-                string month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i + 1);
-                month = $"{char.ToUpperInvariant(month[0])}{month.Substring(1)}";
-                sb.AppendLine($"{month}:");
-                sb.AppendLine($"Квартира |            Власник | Поперед. показ | Поточний показ | Дата пот. показу |       До сплати");
-                sb.AppendLine($"=========+====================+================+================+==================+================");
-                var flatsInfo = _service.GetAllFlatsInfo();
+                table.Append(CreateTableHeader(i));
                 foreach (var info in flatsInfo)
                 {
-                    sb.Append($"{info.FlatNumber} | ".PadLeft(11));
-                    sb.Append($"{info.Surname} | ".PadLeft(21));
-                    sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
-                    sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
-                    sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
-                    double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
-                    sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
+                    int index = (i - 1) % 3;
+                    table.Append(CreateOneTableEntry(info, index));
                 }
-                sb.AppendLine();
+                table.AppendLine();
             }
 
-            return sb.ToString();
+            return table.ToString();
         }
 
         public string CreateForOneFlat(int flatNumber)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder table = new StringBuilder();
             CultureInfo.CurrentCulture = new CultureInfo("uk-UA");
+            var info = _service.GetOneFlatInfo(flatNumber);
 
-            for (int i = 0; i < 3; i++)
+            int month = (_service.QuarterNumber - 1) * 3 + 1;
+            for (int i = month; i <= month + 2; i++)
             {
-                string month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i + 1);
-                month = $"{char.ToUpperInvariant(month[0])}{month.Substring(1)}";
-                sb.AppendLine($"{month}:");
-                sb.AppendLine($"Квартира |            Власник | Поперед. показ | Поточний показ | Дата пот. показу |       До сплати");
-                sb.AppendLine($"=========+====================+================+================+==================+================");
-
-                var info = _service.GetOneFlatInfo(flatNumber);
-                sb.Append($"{info.FlatNumber} | ".PadLeft(11));
-                sb.Append($"{info.Surname} | ".PadLeft(21));
-                sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
-                sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
-                sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
-                double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
-                sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
-
-                sb.AppendLine();
+                table.Append(CreateTableHeader(i));
+                int index = (i - 1) % 3;
+                table.AppendLine(CreateOneTableEntry(info, index));
             }
+
+            return table.ToString();
+        }
+
+        private string CreateTableHeader(int month)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+            monthName = $"{char.ToUpperInvariant(monthName[0])}{monthName.Substring(1)}";
+            sb.AppendLine($"{monthName}:");
+            sb.AppendLine($"Квартира |            Власник | Поперед. показ | Поточний показ | Дата пот. показу |       До сплати");
+            sb.AppendLine($"=========+====================+================+================+==================+================");
+        
+            return sb.ToString();
+        }
+
+        private string CreateOneTableEntry(EnergyUsageInfo info, int i)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            sb.Append($"{info.FlatNumber} | ".PadLeft(11));
+            sb.Append($"{info.Surname} | ".PadLeft(21));
+            sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
+            sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
+            sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
+            double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
+            sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
 
             return sb.ToString();
         }
