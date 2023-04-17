@@ -14,14 +14,16 @@
             return _text;
         }
 
-        public string[] FindEmails()
+        public string[] FindEmails(out string[] invalidEmails)
         {
             var words = _text.Split(new string[] { " ", "\t", "\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries);
             List<string> emails = new List<string>();
+            List<string> invalidEmailsList = new List<string>();
 
             foreach (var word in words)
             {
-                if (Array.FindAll(word.ToCharArray(), x => x == '@').Length == 1)
+                int atOccurencies = Array.FindAll(word.ToCharArray(), x => x == '@').Length;
+                if (atOccurencies == 1)
                 {
                     int atIndex = word.IndexOf('@');
                     string localPart = word.Substring(0, atIndex);
@@ -31,9 +33,18 @@
                     {
                         emails.Add(word);
                     }
+                    else
+                    {
+                        invalidEmailsList.Add(word);
+                    }
+                }
+                else if (atOccurencies > 1)
+                {
+                    invalidEmailsList.Add(word);
                 }
             }
 
+            invalidEmails = invalidEmailsList.ToArray();
             return emails.ToArray();
         }
 
