@@ -60,12 +60,12 @@ namespace Home_task_4
             Console.OutputEncoding = Encoding.Unicode;
 
             EnergyUsageInfoService service = new EnergyUsageInfoService(@"..\..\..\..\EnergyInfo.txt");
-            EnergyUsageInfoReport report = new EnergyUsageInfoReport(service);
+            EnergyUsageInfoReportCreator reportCreator = new EnergyUsageInfoReportCreator(service);
 
             Console.WriteLine("ЗВІТ ПО ВСІХ КВАРТИРАХ");
-            Console.WriteLine(report.CreateForAllFlats());
+            Console.WriteLine(reportCreator.CreateForAllFlats());
             Console.WriteLine("ЗВІТ ПО ОДНІЙ КВАРТИРІ");
-            Console.WriteLine(report.CreateForOneFlat(2));
+            Console.WriteLine(reportCreator.CreateForOneFlat(2));
 
             Console.WriteLine("Найбільший боржник: " + service.FindGreatestDebtor());
             var flats = service.FindFlatsWithNoEnergyUsed();

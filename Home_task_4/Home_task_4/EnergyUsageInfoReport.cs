@@ -3,11 +3,11 @@ using System.Text;
 
 namespace Home_task_4
 {
-    internal class EnergyUsageInfoReport
+    internal class EnergyUsageInfoReportCreator
     {
         private EnergyUsageInfoService _service;
 
-        public EnergyUsageInfoReport(EnergyUsageInfoService service)
+        public EnergyUsageInfoReportCreator(EnergyUsageInfoService service)
         {
             _service = service;
         }
