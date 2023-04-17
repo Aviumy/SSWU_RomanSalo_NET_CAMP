@@ -39,6 +39,10 @@ namespace Home_task_4
                     FlatsCount = Convert.ToInt32(firstLineNumbers[0].ToString());
                     QuarterNumber = Convert.ToInt32(firstLineNumbers[1].ToString());
                 }
+                else
+                {
+                    throw new IOException("Info file is empty.");
+                }
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -82,9 +86,9 @@ namespace Home_task_4
             return _flatsInfo;
         }
 
-        public EnergyUsageInfo GetOneFlatInfo(int flatNumber)
+        public EnergyUsageInfo? GetOneFlatInfo(int flatNumber)
         {
-            return GetAllFlatsInfo().First(x => x.FlatNumber == flatNumber);
+            return GetAllFlatsInfo().FirstOrDefault(x => x.FlatNumber == flatNumber);
         }
 
         public string FindGreatestDebtor()

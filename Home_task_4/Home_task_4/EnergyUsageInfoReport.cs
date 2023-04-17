@@ -63,17 +63,20 @@ namespace Home_task_4
             return sb.ToString();
         }
 
-        private string CreateOneTableEntry(EnergyUsageInfo info, int i)
+        private string CreateOneTableEntry(EnergyUsageInfo? info, int i)
         {
             StringBuilder sb = new StringBuilder();
-            
-            sb.Append($"{info.FlatNumber} | ".PadLeft(11));
-            sb.Append($"{info.Surname} | ".PadLeft(21));
-            sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
-            sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
-            sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
-            double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
-            sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
+
+            if (info != null)
+            {
+                sb.Append($"{info.FlatNumber} | ".PadLeft(11));
+                sb.Append($"{info.Surname} | ".PadLeft(21));
+                sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
+                sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
+                sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
+                double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
+                sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
+            }
 
             return sb.ToString();
         }
