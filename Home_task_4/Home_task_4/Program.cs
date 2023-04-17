@@ -84,9 +84,15 @@ i_like_underscore@but_its_not_allow_in_this_part.example.com
 """;
 
             EmailFinder text1 = new EmailFinder(text);
-            var emails = text1.FindEmails();
+            List<string> invalidEmails;
+            var emails = text1.FindEmails(out invalidEmails);
             Console.WriteLine("VALID EMAILS:");
             foreach (var email in emails)
+            {
+                Console.WriteLine(email);
+            }
+            Console.WriteLine("\nINVALID EMAILS:");
+            foreach (var email in invalidEmails)
             {
                 Console.WriteLine(email);
             }
