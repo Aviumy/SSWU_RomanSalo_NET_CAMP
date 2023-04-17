@@ -2,7 +2,7 @@
 {
     public class EnergyUsageInfo
     {
-        public static double KwCost { get; set; }
+        public static double KwCost { get; set; } = 2.175245;
 
         public int FlatNumber { get; private set; }
         public string Address { get; private set; }

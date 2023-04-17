@@ -12,7 +12,6 @@ namespace Home_task_4
         public EnergyUsageInfoService(string infoFilePath)
         {
             _infoFilePath = infoFilePath;
-            EnergyUsageInfo.KwCost = 2.175245;
         }
 
         public List<EnergyUsageInfo> GetAllFlatsInfo()
