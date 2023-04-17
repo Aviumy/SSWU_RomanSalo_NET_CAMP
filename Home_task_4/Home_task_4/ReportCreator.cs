@@ -8,14 +8,13 @@ namespace Home_task_4
     {
         public int FlatsCount { get; private set; }
         public int QuarterNumber { get; private set; }
-        public double KwCost { get; private set; }
 
-        private List<EnergyConsumptionInfo> _flatsInfo;
+        private List<EnergyUsageInfo> _flatsInfo;
 
         public ReportCreator()
         {
-            _flatsInfo = new List<EnergyConsumptionInfo>();
-            KwCost = 2.175245;
+            _flatsInfo = new List<EnergyUsageInfo>();
+            EnergyUsageInfo.KwCost = 2.175245;
         }
 
         public void ReadFromTextFile(string path)
@@ -56,7 +55,7 @@ namespace Home_task_4
                         ));
                     }
 
-                    EnergyConsumptionInfo flatInfo = new EnergyConsumptionInfo(
+                    EnergyUsageInfo flatInfo = new EnergyUsageInfo(
                         flatNumber: flatNumber,
                         address: address,
                         surname: surname,
@@ -87,7 +86,7 @@ namespace Home_task_4
                     sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
                     sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
                     sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
-                    double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * KwCost;
+                    double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
                     sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
                 }
                 sb.AppendLine();
@@ -115,7 +114,7 @@ namespace Home_task_4
                 sb.Append($"{info.CounterReadings[i]} | ".PadLeft(17));
                 sb.Append($"{info.CounterReadings[i + 1]} | ".PadLeft(17));
                 sb.Append($"{info.CounterReadingDates[i]:dd.MM.yy} | ".PadLeft(19));
-                double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * KwCost;
+                double cost = (info.CounterReadings[i + 1] - info.CounterReadings[i]) * EnergyUsageInfo.KwCost;
                 sb.AppendLine($"{Math.Round(cost, 2).ToString("C", CultureInfo.CurrentCulture)}".PadLeft(15));
                 
                 sb.AppendLine();
@@ -130,7 +129,7 @@ namespace Home_task_4
             double maxCost = 0;
             foreach (var info in _flatsInfo)
             {
-                double cost = (info.CounterReadings.Last() - info.CounterReadings[0]) * KwCost;
+                double cost = (info.CounterReadings.Last() - info.CounterReadings[0]) * EnergyUsageInfo.KwCost;
                 if (cost > maxCost)
                 {
                     maxCost = cost;
