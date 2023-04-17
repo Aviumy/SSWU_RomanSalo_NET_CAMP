@@ -4,10 +4,22 @@ namespace Home_task_4
 {
     public class EnergyUsageInfoService
     {
-        public int FlatsCount { get; private set; }
-        public int QuarterNumber { get; private set; }
-
         private string _infoFilePath;
+        private int _quarterNumber;
+
+        public int FlatsCount { get; private set; }
+        public int QuarterNumber {
+            get
+            {
+                return _quarterNumber;
+            }
+            private set 
+            {
+                if (value < 1 && value > 4)
+                    throw new ArgumentOutOfRangeException("Number of year quarter must be between 1 and 4.");
+                _quarterNumber = value;
+            }
+        }
 
         public EnergyUsageInfoService(string infoFilePath)
         {
@@ -61,6 +73,10 @@ namespace Home_task_4
                         counterReadingDates: dates.ToArray()
                     );
                     _flatsInfo.Add(flatInfo);
+                }
+                if (_flatsInfo.Count != FlatsCount)
+                {
+                    FlatsCount = _flatsInfo.Count;
                 }
             }
             return _flatsInfo;
