@@ -59,16 +59,16 @@ namespace Home_task_4
         {
             Console.OutputEncoding = Encoding.Unicode;
 
-            ReportCreator creator = new ReportCreator();
-            creator.ReadFromTextFile(@"..\..\..\..\EnergyInfo.txt");
+            EnergyUsageInfoService service = new EnergyUsageInfoService(@"..\..\..\..\EnergyInfo.txt");
+            EnergyUsageInfoReport report = new EnergyUsageInfoReport(service);
 
             Console.WriteLine("ЗВІТ ПО ВСІХ КВАРТИРАХ");
-            Console.WriteLine(creator.CreateReportForAllFlats());
+            Console.WriteLine(report.CreateForAllFlats());
             Console.WriteLine("ЗВІТ ПО ОДНІЙ КВАРТИРІ");
-            Console.WriteLine(creator.CreateReportForOneFlat(2));
+            Console.WriteLine(report.CreateForOneFlat(2));
 
-            Console.WriteLine("Найбільший боржник: " + creator.FindGreatestDebtor());
-            var flats = creator.FindFlatsWithNoEnergyUsed();
+            Console.WriteLine("Найбільший боржник: " + service.FindGreatestDebtor());
+            var flats = service.FindFlatsWithNoEnergyUsed();
             Console.WriteLine("\nНомери квартир, в яких не використовували енергії:");
             foreach (int flat in flats)
             {
