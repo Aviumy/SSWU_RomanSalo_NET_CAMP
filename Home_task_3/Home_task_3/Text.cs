@@ -20,6 +20,7 @@
                 return null;
 
             int firstIndex = RawText.IndexOf(substr);
+            // А якщо не знайдено, то лишній раз шукаємо...
             int secondIndex = RawText.IndexOf(substr, firstIndex + 1);
             return secondIndex == -1 ? null : secondIndex;
         }
@@ -58,6 +59,7 @@
                     words[i] = strToReplace;
                 }
             }
+            //Не збережуться всі початкові пробільні символи.
             return string.Join(' ', words);
         }
     }
