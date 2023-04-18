@@ -42,7 +42,7 @@ namespace Home_task_5
 
         public override string ToString()
         {
-            StringBuilder result = new StringBuilder($"Fence with length {Math.Round(Length, 2)} is built on such trees:\n");
+            StringBuilder result = new StringBuilder($"Fence with length {Math.Round(Length, 6)} is built on such trees:\n");
             foreach (Tree tree in HullTrees)
             {
                 result.AppendLine(tree.ToString());
