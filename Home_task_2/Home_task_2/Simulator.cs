@@ -4,7 +4,7 @@
     {
         private readonly WaterTower _tower;
         private readonly List<User> _users;
-
+// Хто створюватиме ці об'єкти і контролюватиме час?
         public Simulator(WaterTower tower, List<User> users)
         {
             _tower = tower;
