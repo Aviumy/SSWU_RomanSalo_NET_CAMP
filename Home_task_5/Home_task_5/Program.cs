@@ -78,6 +78,18 @@
             Console.WriteLine(garden3 < garden4);
             Console.WriteLine(garden3 >= garden4);
             Console.WriteLine(garden3 <= garden4);
+
+            // Examples with no trees or fence
+            List<Tree> trees5 = new List<Tree>();
+            Garden garden5 = new Garden(trees5);
+            List<Tree> trees6 = new List<Tree>()
+            {
+                new Tree(9, 9),
+            };
+            Garden garden6 = new Garden(trees6);
+
+            Console.WriteLine(garden5);
+            Console.WriteLine(garden6);
         }
     }
 }

@@ -52,6 +52,9 @@ namespace Home_task_5
 
         public override string ToString()
         {
+            if (_trees.Count == 0)
+                return "This garden has no trees";
+
             StringBuilder result = new StringBuilder("This garden has trees in:\n");
             foreach (Tree tree in _trees)
             {
