@@ -22,9 +22,12 @@
             {
                 bottomTree,
                 sortedTrees[0],
-                sortedTrees[1],
             };
-            sortedTrees.RemoveAt(0);
+            if (sortedTrees.Count > 1)
+            {
+                hull.Add(sortedTrees[1]);
+                sortedTrees.RemoveAt(0);
+            }
             sortedTrees.RemoveAt(0);
 
             foreach (Tree tree in sortedTrees)

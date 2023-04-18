@@ -94,6 +94,17 @@
             garden6.BuildFence();
             Console.WriteLine(garden5);
             Console.WriteLine(garden6);
+
+            // Example with 2 trees
+            List<Tree> trees7 = new List<Tree>()
+            {
+                new Tree(3, 3),
+                new Tree(4, 4),
+            };
+            Garden garden7 = new Garden(trees7);
+
+            garden7.BuildFence();
+            Console.WriteLine(garden7);
         }
     }
 }
