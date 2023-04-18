@@ -87,7 +87,11 @@
                 new Tree(9, 9),
             };
             Garden garden6 = new Garden(trees6);
+            Console.WriteLine(garden5);
+            Console.WriteLine(garden6);
 
+            garden5.BuildFence();
+            garden6.BuildFence();
             Console.WriteLine(garden5);
             Console.WriteLine(garden6);
         }

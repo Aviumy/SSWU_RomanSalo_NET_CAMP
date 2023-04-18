@@ -8,6 +8,9 @@
 
         public static List<Tree> GrahamScan(List<Tree> trees)
         {
+            if (trees.Count <= 1)
+                return new List<Tree>();
+
             double minY = trees.Min(t => t.Y);
             Tree bottomTree = trees.First(t => t.Y == minY);
 
