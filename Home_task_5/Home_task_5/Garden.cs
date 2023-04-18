@@ -15,10 +15,7 @@ namespace Home_task_5
 
         public void BuildFence()
         {
-            List<Tree> hullTrees = new List<Tree>();
-
-            // TODO
-
+            List<Tree> hullTrees = ConvexHullAlgorithm.GrahamScan(_trees);
             _fence = new Fence(hullTrees);
         }
 

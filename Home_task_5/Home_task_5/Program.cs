@@ -39,6 +39,9 @@
             garden1.BuildFence();
             garden2.BuildFence();
 
+            Console.WriteLine(garden1);
+            Console.WriteLine(garden2);
+
             //Console.WriteLine(garden1 == garden2);
             //Console.WriteLine(garden1 > garden2);
             //Console.WriteLine(garden1 < garden2);
