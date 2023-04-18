@@ -42,6 +42,9 @@ namespace Home_task_5
 
         public override string ToString()
         {
+            if (Length == 0)
+                return "There is no fence";
+
             StringBuilder result = new StringBuilder($"Fence with length {Math.Round(Length, 6)} is built on such trees:\n");
             foreach (Tree tree in HullTrees)
             {

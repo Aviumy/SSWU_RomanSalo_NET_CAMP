@@ -82,6 +82,33 @@ namespace Home_task_5
             Console.WriteLine(garden3 < garden4);
             Console.WriteLine(garden3 >= garden4);
             Console.WriteLine(garden3 <= garden4);
+
+            // Examples with no trees or fence
+            List<Tree> trees5 = new List<Tree>();
+            Garden garden5 = new Garden(trees5);
+            List<Tree> trees6 = new List<Tree>()
+            {
+                new Tree(9, 9),
+            };
+            Garden garden6 = new Garden(trees6);
+            Console.WriteLine(garden5);
+            Console.WriteLine(garden6);
+
+            garden5.BuildFence();
+            garden6.BuildFence();
+            Console.WriteLine(garden5);
+            Console.WriteLine(garden6);
+
+            // Example with 2 trees
+            List<Tree> trees7 = new List<Tree>()
+            {
+                new Tree(3, 3),
+                new Tree(4, 4),
+            };
+            Garden garden7 = new Garden(trees7);
+
+            garden7.BuildFence();
+            Console.WriteLine(garden7);
         }
 
         static void Task_5_2_Example1()
