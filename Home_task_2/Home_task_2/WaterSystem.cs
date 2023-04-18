@@ -1,5 +1,5 @@
 ﻿namespace Home_task_2
-{
+{// Де запускається насос?
     public class WaterSystem
     {
         private User _user;
