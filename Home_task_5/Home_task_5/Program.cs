@@ -9,6 +9,7 @@
 
         static void Task_5_1()
         {
+            // Common examples
             List<Tree> trees1 = new List<Tree>()
             {
                 new Tree(-1, 3),
@@ -42,11 +43,41 @@
             Console.WriteLine(garden1);
             Console.WriteLine(garden2);
 
-            //Console.WriteLine(garden1 == garden2);
-            //Console.WriteLine(garden1 > garden2);
-            //Console.WriteLine(garden1 < garden2);
-            //Console.WriteLine(garden1 >= garden2);
-            //Console.WriteLine(garden1 <= garden2);
+            Console.WriteLine(garden1 == garden2);
+            Console.WriteLine(garden1 > garden2);
+            Console.WriteLine(garden1 < garden2);
+            Console.WriteLine(garden1 >= garden2);
+            Console.WriteLine(garden1 <= garden2);
+
+            // Examples with almost equal fence length, to test overloaded operators
+            List<Tree> trees3 = new List<Tree>()
+            {
+                new Tree(0, 0),
+                new Tree(0, 1),
+                new Tree(1, 1),
+                new Tree(1, 0),
+            };
+            Garden garden3 = new Garden(trees3);
+            List<Tree> trees4 = new List<Tree>()
+            {
+                new Tree(0, 0),
+                new Tree(0, 1),
+                new Tree(1.0000001, 1.0000001),
+                new Tree(1, 0),
+            };
+            Garden garden4 = new Garden(trees4);
+
+            garden3.BuildFence();
+            garden4.BuildFence();
+
+            Console.WriteLine(garden3);
+            Console.WriteLine(garden4);
+
+            Console.WriteLine(garden3 == garden4);
+            Console.WriteLine(garden3 > garden4);
+            Console.WriteLine(garden3 < garden4);
+            Console.WriteLine(garden3 >= garden4);
+            Console.WriteLine(garden3 <= garden4);
         }
     }
 }

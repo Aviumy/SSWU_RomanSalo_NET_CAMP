@@ -4,6 +4,8 @@ namespace Home_task_5
 {
     internal class Fence
     {
+        public const double LENGTH_THRESHOLD = 1e-6;
+
         public List<Tree> HullTrees { get; private set; }
         public double Length { get; private set; }
 
