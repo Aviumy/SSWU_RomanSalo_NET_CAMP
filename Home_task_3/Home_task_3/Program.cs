@@ -1,7 +1,7 @@
 ﻿namespace Home_task_3
 {
     internal class Program
-    {
+    {// Дуже вдала знахідка -клас водної системи, що не робить користувача залежним від конкретної вежі! 
         static void Main(string[] args)
         {
             Task3_2a();
