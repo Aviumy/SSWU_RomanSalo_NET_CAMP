@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 namespace Home_task_5
-{
+{//Roman	Salo	@avaeae	92	15	18	90	95	95	80	106,9. Вітаю Вас у 2 турі.
     internal class Program
     {
         static void Main(string[] args)
