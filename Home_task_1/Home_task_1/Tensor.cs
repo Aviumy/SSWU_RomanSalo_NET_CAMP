@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 namespace Home_task_1
-{
+{//Для найкращого результату слід би було зробити клас узагальнення та привести до типу Tensor масиви елементів.
     internal class Tensor
     {
         public readonly int dimensions;
