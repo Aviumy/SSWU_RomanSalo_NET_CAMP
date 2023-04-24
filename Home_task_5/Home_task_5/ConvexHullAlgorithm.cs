@@ -59,7 +59,7 @@
         {
             return Math.Atan2(tree2.Y - tree1.Y, tree2.X - tree1.X) * 180.0 / Math.PI;
         }
-
+// Краще у цьому випадку відсортувати швидким алгоритмом.
         private static List<Tree> MergeSort(Tree bottomTree, List<Tree> list)
         {
             if (list.Count == 1)
