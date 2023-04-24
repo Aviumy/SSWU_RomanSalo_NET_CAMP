@@ -2,6 +2,8 @@
 {
     internal class Cube
     {
+        
+     // не враховано подібність алгоритмів на грані.
         public readonly int size;
 
         private byte[,,] _pieces;
