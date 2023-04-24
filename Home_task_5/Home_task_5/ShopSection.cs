@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 namespace Home_task_5
-{
+{// не продумана система додавання секцій
     internal class ShopSection
     {
         private int _indentLevel;
