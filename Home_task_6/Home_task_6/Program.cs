@@ -6,6 +6,7 @@
         {
             Task6_1();
             //Task6_2();
+            //Task6_3();
         }
 
         static void Task6_1()
@@ -64,6 +65,29 @@
                 foreach (int item in arraysProc.MergeAndSort())
                 {
                     Console.Write(item + " ");
+                }
+            }
+        }
+
+        static void Task6_3()
+        {
+            Text[] testcases = new Text[]
+            {
+                new Text("one two three one four four two"),
+                new Text("No repeating words"),
+                new Text("a a a a a a a a"),
+                new Text("a a b c d d"),
+                new Text("a b c d a"),
+                new Text("    Whitespaces     test  "),
+                new Text("   "),
+                new Text(""),
+            };
+
+            foreach (var test in testcases)
+            {
+                foreach (var word in test.UniqueWords())
+                {
+                    Console.Write(word + " ");
                 }
                 Console.WriteLine();
             }
