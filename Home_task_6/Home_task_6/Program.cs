@@ -9,12 +9,26 @@
 
         static void Task6_3()
         {
-            Text text1 = new Text("one two three one four four two");
-            foreach (var word in text1.UniqueWords())
+            Text[] testcases = new Text[]
             {
-                Console.Write(word + " ");
+                new Text("one two three one four four two"),
+                new Text("No repeating words"),
+                new Text("a a a a a a a a"),
+                new Text("a a b c d d"),
+                new Text("a b c d a"),
+                new Text("    Whitespaces     test  "),
+                new Text("   "),
+                new Text(""),
+            };
+
+            foreach (var test in testcases)
+            {
+                foreach (var word in test.UniqueWords())
+                {
+                    Console.Write(word + " ");
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
     }
 }
