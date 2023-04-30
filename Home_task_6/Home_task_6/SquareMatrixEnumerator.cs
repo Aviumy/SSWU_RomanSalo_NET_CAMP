@@ -73,9 +73,13 @@ namespace Home_task_6
             {
                 return _row + 1 < _size;
             }
-            else
+            else if (direction == Direction.Right)
             {
                 return _col + 1 < _size;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid direction");
             }
         }
 
@@ -99,6 +103,10 @@ namespace Home_task_6
             {
                 _col++;
             }
+            else
+            {
+                throw new ArgumentException("Invalid direction");
+            }
         }
 
         private Direction SwitchDiagonal(Direction direction)
@@ -107,9 +115,13 @@ namespace Home_task_6
             {
                 return CheckCoords(Direction.Down) ? Direction.Down : Direction.Right;
             }
-            else
+            else if (direction == Direction.RightUp)
             {
                 return CheckCoords(Direction.Right) ? Direction.Right : Direction.Down;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid direction");
             }
         }
     }
