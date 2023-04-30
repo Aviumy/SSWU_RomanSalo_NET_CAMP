@@ -15,15 +15,30 @@ namespace Home_task_6
             _text = text;
         }
 
+        // Варіант 1: якщо слово має кілька входжень - виводить лише одне із них
+        //public IEnumerable<string> UniqueWords()
+        //{
+        //    HashSet<string> uniqueWords = new HashSet<string>();
+        //    string[] words = _text.Split(new char[] { ' ', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+        //    foreach (string word in words)
+        //    {
+        //        if (uniqueWords.Add(word))
+        //        {
+        //            yield return word;
+        //        }
+        //    }
+        //}
+
+        // Варіант 2: якщо слово має кілька входжень - не виводить його взагалі
         public IEnumerable<string> UniqueWords()
         {
-            HashSet<string> uniqueWords = new HashSet<string>();
             string[] words = _text.Split(new char[] { ' ', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string word in words)
+            for (int i = 0; i < words.Length; i++)
             {
-                if (uniqueWords.Add(word))
+                if (Array.IndexOf(words, words[i], i + 1) == -1 &&
+                    Array.IndexOf(words, words[i], 0, i) == -1)
                 {
-                    yield return word;
+                    yield return words[i];
                 }
             }
         }
