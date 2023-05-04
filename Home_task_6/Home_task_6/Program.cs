@@ -1,7 +1,7 @@
 ﻿namespace Home_task_6
 {
     internal class Program
-    {
+    {// Не дотримуєтесь прийнятої структури папок!!!
         static void Main(string[] args)
         {
             Task6_1();
@@ -54,7 +54,7 @@
                 new int[] { },
                 new int[] { },
             };
-
+// Не зрозуміли умову задачі(
             List<int[][]> testcases = new List<int[][]>
             {
                 arrays1, arrays2, arrays3, arrays4
@@ -70,7 +70,7 @@
         }
 
         static void Task6_3()
-        {
+        {// Тут теж. Це всі задачі на використання yield. пройдіть цю тему повторно.
             Text[] testcases = new Text[]
             {
                 new Text("one two three one four four two"),
