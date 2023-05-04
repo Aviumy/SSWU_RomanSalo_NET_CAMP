@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Home_task_6
-{
+{// на кожному елементі має бути не більше 2 умов. Заплутано алгоритмічно у Вас
     internal class SquareMatrixEnumerator : IEnumerator
     {
         private enum Direction
