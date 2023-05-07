@@ -38,6 +38,8 @@ namespace Home_task_7
             trafficLightStateTimes[State.Yellow] = 555;
             trafficLights[1].PossibleStates[0] = State.Green;
             simulator.TrafficLights[1].PossibleStates[0] = State.RedAndYellow;
+            simulator.TrafficLights[0].StateTimes[State.RedAndYellow] = 888;
+            trafficLights[0].StateTimes[State.Red] = 777;
 
             Console.WriteLine(simulator);
             foreach (uint s in simulator.SimulateNSeconds(14))

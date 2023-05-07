@@ -48,6 +48,18 @@ namespace Home_task_7
                 return _possibleStates.Select(x => x).ToArray();
             }
         }
+        public Dictionary<State, uint> StateTimes
+        {
+            get
+            {
+                var copy = new Dictionary<State, uint>();
+                foreach (var key in _stateTimes.Keys)
+                {
+                    copy.Add(key, _stateTimes[key]);
+                }
+                return copy;
+            }
+        }
 
         public void SwitchState()
         {
