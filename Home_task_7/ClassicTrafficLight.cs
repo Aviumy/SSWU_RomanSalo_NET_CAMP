@@ -20,6 +20,23 @@ namespace Home_task_7
                 State.BlinkingGreen,
                 State.Yellow,
             };
+
+            if (_possibleStates.Length != stateSwitchTimes.Count)
+            {
+                throw new ArgumentException("Count of states and count of switch times should match.");
+            }
+            foreach (var state in stateSwitchTimes.Keys)
+            {
+                if (!_possibleStates.Contains(state))
+                {
+                    throw new ArgumentException($"Unexpected state found: {state}.");
+                }
+            }
+
+            if (!_possibleStates.Contains(initialState))
+            {
+                throw new ArgumentException($"Invalid initial state was set: {initialState}.");
+            }
         }
     }
 }
