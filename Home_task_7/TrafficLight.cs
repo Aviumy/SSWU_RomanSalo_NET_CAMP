@@ -104,8 +104,7 @@ namespace Home_task_7
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
-            result.Append($"Світлофор: {Name} | ");
-            result.AppendLine($"Колір: {CurrState}\t({StateTimeLeft} с)");
+            result.Append($"{Name}: {CurrState} ({StateTimeLeft} с)");
             return result.ToString();
         }
     }
