@@ -21,6 +21,9 @@ namespace Home_task_7
         protected State[] _possibleStates;
         protected Dictionary<State, uint> _stateTimes;
 
+        public event Action NewStateTimesIsNull;
+        public event Action NewStateTimesCountDoesntMatch;
+
         protected TrafficLight(string name, State initialState, Dictionary<State, uint> stateSwitchTimes)
         {
             Name = name;
@@ -64,13 +67,13 @@ namespace Home_task_7
         {
             if (newStateTimes == null)
             {
-                Console.WriteLine("Array of state switch times should not be null.");
+                NewStateTimesIsNull?.Invoke();
             }
             else
             {
                 if (newStateTimes.Length != _possibleStates.Length)
                 {
-                    Console.WriteLine("States count and count of state switch times should match.");
+                    NewStateTimesCountDoesntMatch?.Invoke();
                 }
                 else
                 {

@@ -27,6 +27,11 @@ namespace Home_task_7
                 new ClassicTrafficLight("Зх-Сх", State.Red, trafficLightStateTimes),
                 new ClassicTrafficLight("Сх-Зх", State.Red, trafficLightStateTimes),
             };
+            foreach (var trafficLight in trafficLights)
+            {
+                trafficLight.NewStateTimesIsNull += () => Console.WriteLine("Array of state switch times should not be null.");
+                trafficLight.NewStateTimesCountDoesntMatch += () => Console.WriteLine("Count of states and count of switch times should match.");
+            }
             Simulator simulator = new Simulator(trafficLights);
 
             // Перевірка на те, чи правильно реалізована глибока копія
@@ -53,6 +58,10 @@ namespace Home_task_7
             {
                 Console.WriteLine(simulator);
             }
+
+            // Тест подій
+            simulator.TrafficLights[0].ChangeStateTimes(new uint[] { 0, 0 });
+            simulator.TrafficLights[0].ChangeStateTimes(null);
         }
     }
 }
