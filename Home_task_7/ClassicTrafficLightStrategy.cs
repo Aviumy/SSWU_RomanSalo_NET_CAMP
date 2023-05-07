@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Home_task_7
 {
-    internal class ClassicTrafficLightStrategy : SwitchStateStrategy
+    internal class ClassicTrafficLightStrategy : ITrafficLightStrategy
     {
         public State ChangeState(State currState)
         {

@@ -17,7 +17,7 @@ namespace Home_task_7
 
     internal abstract class TrafficLight
     {
-        protected SwitchStateStrategy _strategy;
+        protected ITrafficLightStrategy _strategy;
         protected State[] _possibleStates;
         protected Dictionary<State, uint> _stateTimes;
 
