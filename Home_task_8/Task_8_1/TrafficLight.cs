@@ -13,6 +13,15 @@ namespace Task_8_1
         Green,
         BlinkingGreen,
         Yellow,
+        TurnOff,
+        TurnOn,
+        BlinkingTurn,
+    }
+
+    public enum Turn
+    {
+        Left,
+        Right,
     }
 
     internal abstract class TrafficLight
@@ -67,7 +76,7 @@ namespace Task_8_1
             StateTimeLeft = _stateTimes[CurrState];
         }
 
-        public void DecrementStateTime()
+        public virtual void DecrementStateTime()
         {
             if (--StateTimeLeft == 0)
             {
