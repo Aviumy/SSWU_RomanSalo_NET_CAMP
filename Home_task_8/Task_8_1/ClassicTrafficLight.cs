@@ -11,7 +11,6 @@ namespace Task_8_1
         public ClassicTrafficLight(string name, State initialState, Dictionary<State, uint> stateSwitchTimes)
             : base(name, initialState, stateSwitchTimes)
         {
-            _strategy = new ClassicTrafficLightStrategy();
             _possibleStates = new State[]
             {
                 State.Red,

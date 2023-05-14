@@ -26,7 +26,6 @@ namespace Task_8_1
 
     internal abstract class TrafficLight
     {
-        protected ITrafficLightStrategy _strategy;
         protected State[] _possibleStates;
         protected Dictionary<State, uint> _stateTimes;
 
@@ -70,9 +69,21 @@ namespace Task_8_1
             }
         }
 
-        public void SwitchState()
+        public virtual void SwitchState()
         {
-            CurrState = _strategy.ChangeState(CurrState);
+            if (CurrState == State.Red)
+                CurrState = State.RedAndYellow;
+            else if (CurrState == State.RedAndYellow)
+                CurrState = State.Green;
+            else if (CurrState == State.Green)
+                CurrState = State.BlinkingGreen;
+            else if (CurrState == State.BlinkingGreen)
+                CurrState = State.Yellow;
+            else if (CurrState == State.Yellow)
+                CurrState = State.Red;
+            else
+                throw new ArgumentException("Invalid state!");
+
             StateTimeLeft = _stateTimes[CurrState];
         }
 

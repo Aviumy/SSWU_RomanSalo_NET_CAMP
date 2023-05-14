@@ -11,7 +11,6 @@ namespace Task_8_1
         public TrafficLightWithTurnLight(string name, Turn turn, State initialState, State initialTurnState, Dictionary<State, uint> stateSwitchTimes)
             : base(name, initialState, stateSwitchTimes)
         {
-            _strategy = new TrafficLightWithTurnStrategy();
             _possibleStates = new State[]
             {
                 State.Red,
