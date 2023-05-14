@@ -28,26 +28,11 @@ namespace Task_8_1
                 State.BlinkingTurn,
             };
 
-            if (_possibleStates.Length + _possibleTurnStates.Length != stateSwitchTimes.Count)
-            {
-                throw new ArgumentException("Count of states (of main and turn lights) and count of switch times should match.");
-            }
-            foreach (var state in stateSwitchTimes.Keys)
-            {
-                if (!_possibleStates.Contains(state) && !_possibleTurnStates.Contains(state))
-                {
-                    throw new ArgumentException($"Unexpected state found: {state}.");
-                }
-            }
-
-            if (!_possibleStates.Contains(initialState))
-            {
-                throw new ArgumentException($"Invalid initial main lights state was set: {initialState}.");
-            }
-            if (!_possibleTurnStates.Contains(initialTurnState))
-            {
-                throw new ArgumentException($"Invalid initial turn light state was set: {initialTurnState}.");
-            }
+            var mergedPossibleStates = _possibleStates.Concat(_possibleTurnStates).ToArray();
+            TrafficLightValidator.MatchStateCount(mergedPossibleStates, stateSwitchTimes);
+            TrafficLightValidator.CheckForUnexpectedStates(mergedPossibleStates, stateSwitchTimes);
+            TrafficLightValidator.CheckInitialState(_possibleStates, initialState);
+            TrafficLightValidator.CheckInitialState(_possibleTurnStates, initialTurnState);
 
             Turn = turn;
             TurnLightState = initialTurnState;
@@ -69,8 +54,7 @@ namespace Task_8_1
 
         public void SwitchTurn()
         {
-            if (!_possibleTurnStates.Contains(TurnLightState))
-                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
+            TrafficLightValidator.CheckCurrentState(_possibleTurnStates, TurnLightState);
 
             if (TurnLightState == State.TurnOff)            
                 TurnLightState = State.TurnOn;            
@@ -79,10 +63,9 @@ namespace Task_8_1
             else if (TurnLightState == State.BlinkingTurn)            
                 TurnLightState = State.TurnOff;            
             else
-                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
+                throw new InvalidOperationException($"Invalid turn light state: {TurnLightState}");
 
-            if (!_possibleTurnStates.Contains(TurnLightState))
-                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
+            TrafficLightValidator.CheckCurrentState(_possibleTurnStates, TurnLightState);
 
             TurnTimeLeft = _stateTimes[TurnLightState];
         }
