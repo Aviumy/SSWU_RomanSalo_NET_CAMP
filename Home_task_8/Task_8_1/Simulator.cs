@@ -50,9 +50,8 @@ namespace Task_8_1
             result.AppendLine($"Час симуляції: {SimulationTime} с");
             foreach (var trafficLight in _trafficLights)
             {
-                result.Append(trafficLight + " | ");
+                result.AppendLine(trafficLight.ToString());
             }
-            result.AppendLine();
             return result.ToString();
         }
     }
