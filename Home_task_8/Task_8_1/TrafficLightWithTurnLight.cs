@@ -69,6 +69,9 @@ namespace Task_8_1
 
         public void SwitchTurn()
         {
+            if (!_possibleTurnStates.Contains(TurnLightState))
+                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
+
             if (TurnLightState == State.TurnOff)            
                 TurnLightState = State.TurnOn;            
             else if (TurnLightState == State.TurnOn)            
@@ -76,7 +79,10 @@ namespace Task_8_1
             else if (TurnLightState == State.BlinkingTurn)            
                 TurnLightState = State.TurnOff;            
             else
-                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");            
+                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
+
+            if (!_possibleTurnStates.Contains(TurnLightState))
+                throw new ArgumentException($"Invalid turn light state: {TurnLightState}");
 
             TurnTimeLeft = _stateTimes[TurnLightState];
         }
