@@ -10,8 +10,8 @@ namespace Task_8_1
     {
         static protected State[] _possibleTurnStates;
 
-        public TrafficLightWithTurnLight(string name, Turn turn, State initialState, State initialTurnState, Dictionary<State, uint> stateSwitchTimes)
-            : base(name, initialState, stateSwitchTimes)
+        public TrafficLightWithTurnLight(string name, Dictionary<State, uint> stateSwitchTimes, Turn turn, State initialState, State initialTurnState, uint initialStateTime = uint.MaxValue, uint initialTurnStateTime = uint.MaxValue)
+            : base(name, stateSwitchTimes, initialState, initialStateTime)
         {
             _possibleStates = new State[]
             {
@@ -36,7 +36,7 @@ namespace Task_8_1
 
             Turn = turn;
             TurnLightState = initialTurnState;
-            TurnTimeLeft = stateSwitchTimes[initialTurnState];
+            TurnTimeLeft = initialTurnStateTime == uint.MaxValue ? stateSwitchTimes[initialTurnState] : initialTurnStateTime;
         }
 
         public Turn Turn { get; protected set; }

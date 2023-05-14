@@ -33,7 +33,7 @@ namespace Task_8_1
         public event Action NewStateTimesIsNull;
         public event Action NewStateTimesCountDoesntMatch;
 
-        protected TrafficLight(string name, State initialState, Dictionary<State, uint> stateSwitchTimes)
+        protected TrafficLight(string name, Dictionary<State, uint> stateSwitchTimes, State initialState, uint initialStateTime = uint.MaxValue)
         {
             Name = name;
             CurrState = initialState;
@@ -44,7 +44,7 @@ namespace Task_8_1
                 _stateTimes.Add(key, stateSwitchTimes[key]);
             }
 
-            StateTimeLeft = stateSwitchTimes[initialState];
+            StateTimeLeft = initialStateTime == uint.MaxValue ? stateSwitchTimes[initialState] : initialStateTime;
         }
 
         public string Name { get; protected set; }
