@@ -19,30 +19,47 @@ namespace Task_8_1
 
         static void Task_8_1()
         {
-            var classicTrafficLightStateTimes = new Dictionary<State, uint>()
+            var classicAllNSAndCross2WE = new Dictionary<State, uint>()
             {
-                [State.Red] = 7,
+                [State.Red] = 10,
                 [State.RedAndYellow] = 1,
-                [State.Green] = 4,
+                [State.Green] = 7,
                 [State.BlinkingGreen] = 1,
                 [State.Yellow] = 1,
             };
-            var turnTrafficLightStateTimes = new Dictionary<State, uint>()
+            var classicCross1WE = new Dictionary<State, uint>()
             {
-                [State.Red] = 6,
+                [State.Red] = 12,
                 [State.RedAndYellow] = 1,
-                [State.Green] = 3,
+                [State.Green] = 5,
                 [State.BlinkingGreen] = 1,
                 [State.Yellow] = 1,
-                [State.TurnOff] = 3,
-                [State.TurnOn] = 2,
+            };
+            var turnCross1WE = new Dictionary<State, uint>()
+            {
+                [State.Red] = 12,
+                [State.RedAndYellow] = 1,
+                [State.Green] = 5,
+                [State.BlinkingGreen] = 1,
+                [State.Yellow] = 1,
+                [State.TurnOff] = 11,
+                [State.TurnOn] = 8,
                 [State.BlinkingTurn] = 1,
             };
 
             List<TrafficLight> trafficLights = new List<TrafficLight>()
             {
-                new ClassicTrafficLight("ТестЗвич", State.RedAndYellow, classicTrafficLightStateTimes),
-                new TrafficLightWithTurnLight("ТестПов", Turn.Left, State.RedAndYellow, State.TurnOff, turnTrafficLightStateTimes),
+                new TrafficLightWithTurnLight("Cross1_Line1_WE_TurnLeft", turnCross1WE, Turn.Left, State.Red, State.TurnOff, turnCross1WE[State.Red] - 2),
+                new ClassicTrafficLight("Cross1_Line2_EW", classicCross1WE, State.Red, classicCross1WE[State.Red] - 2),
+                new TrafficLightWithTurnLight("Cross1_Line3_EW_TurnLeft", turnCross1WE, Turn.Left, State.Red, State.TurnOff, turnCross1WE[State.Red] - 2),
+                new ClassicTrafficLight("Cross1_NS", classicAllNSAndCross2WE, State.RedAndYellow),
+                new ClassicTrafficLight("Cross1_SN", classicAllNSAndCross2WE, State.RedAndYellow),
+
+                new ClassicTrafficLight("Cross2_Line1_WE", classicAllNSAndCross2WE, State.Red),
+                new ClassicTrafficLight("Cross2_Line2_EW", classicAllNSAndCross2WE, State.Red),
+                new ClassicTrafficLight("Cross2_Line3_EW", classicAllNSAndCross2WE, State.Red),
+                new ClassicTrafficLight("Cross2_NS", classicAllNSAndCross2WE, State.RedAndYellow),
+                new ClassicTrafficLight("Cross2_SN", classicAllNSAndCross2WE, State.RedAndYellow),
             };
             foreach (var trafficLight in trafficLights)
             {
@@ -52,7 +69,7 @@ namespace Task_8_1
             Simulator simulator = new Simulator(trafficLights);
 
             Console.WriteLine(simulator);
-            foreach (uint s in simulator.SimulateNSeconds(14))
+            foreach (uint s in simulator.SimulateNSeconds(20))
             {
                 Console.WriteLine(simulator);
             }
@@ -70,10 +87,10 @@ namespace Task_8_1
             };
             List<TrafficLight> trafficLights = new List<TrafficLight>()
             {
-                new ClassicTrafficLight("Пн-Пд", State.RedAndYellow, trafficLightStateTimes),
-                new ClassicTrafficLight("Пд-Пн", State.RedAndYellow, trafficLightStateTimes),
-                new ClassicTrafficLight("Зх-Сх", State.Red, trafficLightStateTimes),
-                new ClassicTrafficLight("Сх-Зх", State.Red, trafficLightStateTimes),
+                new ClassicTrafficLight("Пн-Пд", trafficLightStateTimes, State.RedAndYellow),
+                new ClassicTrafficLight("Пд-Пн", trafficLightStateTimes, State.RedAndYellow),
+                new ClassicTrafficLight("Зх-Сх", trafficLightStateTimes, State.Red),
+                new ClassicTrafficLight("Сх-Зх", trafficLightStateTimes, State.Red),
             };
             foreach (var trafficLight in trafficLights)
             {
