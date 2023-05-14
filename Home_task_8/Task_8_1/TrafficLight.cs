@@ -71,6 +71,9 @@ namespace Task_8_1
 
         public virtual void SwitchState()
         {
+            if (!_possibleStates.Contains(CurrState))
+                throw new ArgumentException($"Invalid traffic light state: {CurrState}");
+
             if (CurrState == State.Red)
                 CurrState = State.RedAndYellow;
             else if (CurrState == State.RedAndYellow)
@@ -82,7 +85,10 @@ namespace Task_8_1
             else if (CurrState == State.Yellow)
                 CurrState = State.Red;
             else
-                throw new ArgumentException("Invalid state!");
+                throw new ArgumentException($"Invalid traffic light state: {CurrState}");
+
+            if (!_possibleStates.Contains(CurrState))
+                throw new ArgumentException($"Invalid traffic light state: {CurrState}");
 
             StateTimeLeft = _stateTimes[CurrState];
         }
