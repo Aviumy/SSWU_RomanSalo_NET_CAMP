@@ -8,6 +8,8 @@ namespace Task_8_1
 {
     internal class TrafficLightWithTurnLight : TrafficLight
     {
+        static protected State[] _possibleTurnStates;
+
         public TrafficLightWithTurnLight(string name, Turn turn, State initialState, State initialTurnState, Dictionary<State, uint> stateSwitchTimes)
             : base(name, initialState, stateSwitchTimes)
         {
@@ -18,18 +20,21 @@ namespace Task_8_1
                 State.Green,
                 State.BlinkingGreen,
                 State.Yellow,
-                State.TurnOff,  
+            };
+            _possibleTurnStates = new State[]
+            {
+                State.TurnOff,
                 State.TurnOn,
                 State.BlinkingTurn,
             };
 
-            if (_possibleStates.Length != stateSwitchTimes.Count)
+            if (_possibleStates.Length + _possibleTurnStates.Length != stateSwitchTimes.Count)
             {
-                throw new ArgumentException("Count of states and count of switch times should match.");
+                throw new ArgumentException("Count of states (of main and turn lights) and count of switch times should match.");
             }
             foreach (var state in stateSwitchTimes.Keys)
             {
-                if (!_possibleStates.Contains(state))
+                if (!_possibleStates.Contains(state) && !_possibleTurnStates.Contains(state))
                 {
                     throw new ArgumentException($"Unexpected state found: {state}.");
                 }
@@ -37,7 +42,11 @@ namespace Task_8_1
 
             if (!_possibleStates.Contains(initialState))
             {
-                throw new ArgumentException($"Invalid initial state was set: {initialState}.");
+                throw new ArgumentException($"Invalid initial main lights state was set: {initialState}.");
+            }
+            if (!_possibleTurnStates.Contains(initialTurnState))
+            {
+                throw new ArgumentException($"Invalid initial turn light state was set: {initialTurnState}.");
             }
 
             Turn = turn;

@@ -26,7 +26,8 @@ namespace Task_8_1
 
     internal abstract class TrafficLight
     {
-        protected State[] _possibleStates;
+        static protected State[] _possibleStates;
+
         protected Dictionary<State, uint> _stateTimes;
 
         public event Action NewStateTimesIsNull;
