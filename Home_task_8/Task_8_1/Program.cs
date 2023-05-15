@@ -73,6 +73,20 @@ namespace Task_8_1
             {
                 Console.WriteLine(simulator);
             }
+
+            //classicCross1WE[State.Red] = 7;
+            //classicCross1WE[State.Green] = 10;
+            //simulator.TrafficLights[1].ChangeStateTimes(classicCross1WE);
+            //turnCross1WE[State.TurnOff] -= 2;
+            //turnCross1WE[State.TurnOn] += 2;
+            //simulator.TrafficLights[0].ChangeStateTimes(turnCross1WE);
+
+            //Console.WriteLine("=========Змінюємо час переключання станів світлофорів=========");
+            //Console.WriteLine(simulator);
+            //foreach (uint s in simulator.SimulateNSeconds(20))
+            //{
+            //    Console.WriteLine(simulator);
+            //}
         }
 
         static void Task_7()
@@ -113,22 +127,22 @@ namespace Task_8_1
             }
 
             // Змінюємо час переключання світлофорів
-            Console.WriteLine("=========Змінюємо час переключення станів світлофорів=========");
-            uint[] newStateTimes = new uint[] { 8, 1, 5, 1, 1 };
-            simulator.TrafficLights[0].ChangeStateTimes(newStateTimes);
-            simulator.TrafficLights[1].ChangeStateTimes(newStateTimes);
-            simulator.TrafficLights[2].ChangeStateTimes(newStateTimes);
-            simulator.TrafficLights[3].ChangeStateTimes(newStateTimes);
+            //Console.WriteLine("=========Змінюємо час переключення станів світлофорів=========");
+            //uint[] newStateTimes = new uint[] { 8, 1, 5, 1, 1 };
+            //simulator.TrafficLights[0].ChangeStateTimes(newStateTimes);
+            //simulator.TrafficLights[1].ChangeStateTimes(newStateTimes);
+            //simulator.TrafficLights[2].ChangeStateTimes(newStateTimes);
+            //simulator.TrafficLights[3].ChangeStateTimes(newStateTimes);
 
-            Console.WriteLine(simulator);
-            foreach (uint s in simulator.SimulateNSeconds(16))
-            {
-                Console.WriteLine(simulator);
-            }
+            //Console.WriteLine(simulator);
+            //foreach (uint s in simulator.SimulateNSeconds(16))
+            //{
+            //    Console.WriteLine(simulator);
+            //}
 
             // Тест подій
-            simulator.TrafficLights[0].ChangeStateTimes(new uint[] { 0, 0 });
-            simulator.TrafficLights[0].ChangeStateTimes(null);
+            //simulator.TrafficLights[0].ChangeStateTimes(new uint[] { 0, 0 });
+            //simulator.TrafficLights[0].ChangeStateTimes(null);
         }
     }
 }

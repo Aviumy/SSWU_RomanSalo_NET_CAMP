@@ -52,6 +52,21 @@ namespace Task_8_1
             }
         }
 
+        public override void ChangeStateTimes(Dictionary<State, uint> newStateSwitchTimes)
+        {
+            var mergedPossibleStates = _possibleStates.Concat(_possibleTurnStates).ToArray();
+            TrafficLightValidator.MatchStateCount(mergedPossibleStates, newStateSwitchTimes);
+            TrafficLightValidator.CheckForUnexpectedStates(mergedPossibleStates, newStateSwitchTimes);
+
+            _stateTimes = new Dictionary<State, uint>();
+            foreach (var key in newStateSwitchTimes.Keys)
+            {
+                _stateTimes.Add(key, newStateSwitchTimes[key]);
+            }
+            StateTimeLeft = _stateTimes[CurrState];
+            TurnTimeLeft = _stateTimes[TurnLightState];
+        }
+
         public void SwitchTurn()
         {
             TrafficLightValidator.CheckCurrentState(_possibleTurnStates, TurnLightState);

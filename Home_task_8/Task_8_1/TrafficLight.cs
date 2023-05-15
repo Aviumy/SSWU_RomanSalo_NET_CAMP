@@ -100,30 +100,17 @@ namespace Task_8_1
             }
         }
 
-        public void ChangeStateTimes(uint[] newStateTimes)
+        public virtual void ChangeStateTimes(Dictionary<State, uint> newStateSwitchTimes)
         {
-            if (newStateTimes == null)
+            TrafficLightValidator.MatchStateCount(_possibleStates, newStateSwitchTimes);
+            TrafficLightValidator.CheckForUnexpectedStates(_possibleStates, newStateSwitchTimes);
+
+            _stateTimes = new Dictionary<State, uint>();
+            foreach (var key in newStateSwitchTimes.Keys)
             {
-                NewStateTimesIsNull?.Invoke();
+                _stateTimes.Add(key, newStateSwitchTimes[key]);
             }
-            else
-            {
-                if (newStateTimes.Length != _possibleStates.Length)
-                {
-                    NewStateTimesCountDoesntMatch?.Invoke();
-                }
-                else
-                {
-                    for (int i = 0; i < newStateTimes.Length; i++)
-                    {
-                        _stateTimes[_possibleStates[i]] = newStateTimes[i];
-                        if (CurrState == _possibleStates[i])
-                        {
-                            StateTimeLeft = newStateTimes[i];
-                        }
-                    }
-                }
-            }
+            StateTimeLeft = _stateTimes[CurrState];
         }
 
         public override string ToString()
