@@ -30,9 +30,6 @@ namespace Task_8_1
 
         protected Dictionary<State, uint> _stateTimes;
 
-        public event Action NewStateTimesIsNull;
-        public event Action NewStateTimesCountDoesntMatch;
-
         protected TrafficLight(string name, Dictionary<State, uint> stateSwitchTimes, State initialState, uint initialStateTime = uint.MaxValue)
         {
             Name = name;

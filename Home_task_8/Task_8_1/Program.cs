@@ -61,11 +61,6 @@ namespace Task_8_1
                 new ClassicTrafficLight("Cross2_NS", classicAllNSAndCross2WE, State.RedAndYellow),
                 new ClassicTrafficLight("Cross2_SN", classicAllNSAndCross2WE, State.RedAndYellow),
             };
-            foreach (var trafficLight in trafficLights)
-            {
-                trafficLight.NewStateTimesIsNull += () => Console.WriteLine("Array of state switch times should not be null.");
-                trafficLight.NewStateTimesCountDoesntMatch += () => Console.WriteLine("Count of states and count of switch times should match.");
-            }
             Simulator simulator = new Simulator(trafficLights);
 
             Console.WriteLine(simulator);
@@ -108,8 +103,8 @@ namespace Task_8_1
             };
             foreach (var trafficLight in trafficLights)
             {
-                trafficLight.NewStateTimesIsNull += () => Console.WriteLine("Array of state switch times should not be null.");
-                trafficLight.NewStateTimesCountDoesntMatch += () => Console.WriteLine("Count of states and count of switch times should match.");
+                //trafficLight.NewStateTimesIsNull += () => Console.WriteLine("Array of state switch times should not be null.");
+                //trafficLight.NewStateTimesCountDoesntMatch += () => Console.WriteLine("Count of states and count of switch times should match.");
             }
             Simulator simulator = new Simulator(trafficLights);
 
