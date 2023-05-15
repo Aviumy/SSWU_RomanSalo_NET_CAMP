@@ -40,5 +40,13 @@ namespace Task_8_1
                 throw new ArgumentException($"Invalid initial state was set: {initialState}.");
             }
         }
+
+        internal static void ValidateStateTimeForZero(uint stateTime)
+        {
+            if (stateTime == 0)
+            {
+                throw new ArgumentException("State time should not be set as zero.");
+            }
+        }
     }
 }

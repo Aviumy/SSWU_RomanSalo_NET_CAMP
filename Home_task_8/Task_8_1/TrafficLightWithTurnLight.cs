@@ -34,6 +34,7 @@ namespace Task_8_1
             TrafficLightValidator.CheckInitialState(_possibleStates, initialState);
             TrafficLightValidator.CheckInitialState(_possibleTurnStates, initialTurnState);
 
+            TrafficLightValidator.ValidateStateTimeForZero(initialTurnStateTime);
             Turn = turn;
             TurnLightState = initialTurnState;
             TurnTimeLeft = initialTurnStateTime == uint.MaxValue ? stateSwitchTimes[initialTurnState] : initialTurnStateTime;
@@ -61,6 +62,7 @@ namespace Task_8_1
             _stateTimes = new Dictionary<State, uint>();
             foreach (var key in newStateSwitchTimes.Keys)
             {
+                TrafficLightValidator.ValidateStateTimeForZero(newStateSwitchTimes[key]);
                 _stateTimes.Add(key, newStateSwitchTimes[key]);
             }
             StateTimeLeft = _stateTimes[CurrState];

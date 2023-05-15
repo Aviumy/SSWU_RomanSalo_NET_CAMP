@@ -41,9 +41,11 @@ namespace Task_8_1
             _stateTimes = new Dictionary<State, uint>();
             foreach (var key in stateSwitchTimes.Keys)
             {
+                TrafficLightValidator.ValidateStateTimeForZero(stateSwitchTimes[key]);
                 _stateTimes.Add(key, stateSwitchTimes[key]);
             }
 
+            TrafficLightValidator.ValidateStateTimeForZero(initialStateTime);
             StateTimeLeft = initialStateTime == uint.MaxValue ? stateSwitchTimes[initialState] : initialStateTime;
         }
 
@@ -108,6 +110,7 @@ namespace Task_8_1
             _stateTimes = new Dictionary<State, uint>();
             foreach (var key in newStateSwitchTimes.Keys)
             {
+                TrafficLightValidator.ValidateStateTimeForZero(newStateSwitchTimes[key]);
                 _stateTimes.Add(key, newStateSwitchTimes[key]);
             }
             StateTimeLeft = _stateTimes[CurrState];
