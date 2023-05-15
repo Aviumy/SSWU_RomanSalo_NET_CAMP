@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" modified="2023-05-15T12:54:22.220Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="XtttJy5Ooe7FSnQBlWch" version="21.3.0" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1050" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-5" value="ClassicTrafficLight" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="250" y="380" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="yv8XWIr87M4-oUTZZ-md-5" vertex="1">
+          <mxGeometry y="26" width="160" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-9" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.437;entryY=1.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-5" target="yv8XWIr87M4-oUTZZ-md-24" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="520" y="290" as="sourcePoint" />
+            <mxPoint x="424.24" y="303.6719999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-12" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-15" target="yv8XWIr87M4-oUTZZ-md-24" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="436.97" y="302.304" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-15" value="TrafficLightWithTurnLight" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="460" y="380" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-16" value="#&amp;nbsp;&lt;u&gt;possibleTurnStates: State[]&lt;/u&gt;&lt;br&gt;#&amp;nbsp;isTurnOn: bool&lt;br&gt;#&amp;nbsp;turn: Turn&lt;br&gt;#&amp;nbsp;turnTimeLeft: uint" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="yv8XWIr87M4-oUTZZ-md-15" vertex="1">
+          <mxGeometry y="26" width="190" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="yv8XWIr87M4-oUTZZ-md-15" vertex="1">
+          <mxGeometry y="100" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-18" value="+&amp;nbsp;DecrementStateTime()&lt;br&gt;+&amp;nbsp;SwitchTurn()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="yv8XWIr87M4-oUTZZ-md-15" vertex="1">
+          <mxGeometry y="108" width="190" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-19" value="Simulator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="610" y="80" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-20" value="- trafficLights:&amp;nbsp;List&amp;lt;TrafficLight&amp;gt;&lt;br&gt;- simulationTime: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="yv8XWIr87M4-oUTZZ-md-19" vertex="1">
+          <mxGeometry y="26" width="190" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="yv8XWIr87M4-oUTZZ-md-19" vertex="1">
+          <mxGeometry y="70" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-22" value="+&amp;nbsp;SimulateOneSecond()&lt;br&gt;+ SimulateNSeconds(n: uint)&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :IEnumerable&amp;lt;uint&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="yv8XWIr87M4-oUTZZ-md-19" vertex="1">
+          <mxGeometry y="78" width="190" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-24" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;TrafficLight&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# name: string&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;# currState: State&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;# stateTimeLeft: uint&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;# &lt;u&gt;possibleStates: State[]&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/u&gt;# stateTimes: Dict&amp;lt;State, uint&amp;gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;SwitchState()&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+&amp;nbsp;DecrementStateTime()&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+&amp;nbsp;ChangeStateTimes&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; (newStateTimes: uint[])&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="350" y="80" width="190" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="yv8XWIr87M4-oUTZZ-md-25" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-24" target="yv8XWIr87M4-oUTZZ-md-20" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="480" y="290" as="sourcePoint" />
+            <mxPoint x="640" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-0" value="TrafficLightValidator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20" y="40" width="250" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="R7opCH1WQ_tVbO1GXmBw-0" vertex="1">
+          <mxGeometry y="26" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-3" value="&lt;u&gt;+&amp;nbsp;CheckCurrentState(possibleStates&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;:State[], currState: State)&lt;br&gt;&lt;br&gt;+&amp;nbsp;MatchStateCount(possibleStates:State[],&amp;nbsp; &amp;nbsp; stateSwitchTimes: Dictionary&amp;lt;State,uint&amp;gt;)&lt;br&gt;&lt;br&gt;+&amp;nbsp;CheckForUnexpectedStates(&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; possibleStates:State[],&lt;br&gt;&amp;nbsp; stateSwitchTimes: Dictionary&amp;lt;State,uint&amp;gt;)&lt;br&gt;&lt;br&gt;+ CheckInitialState(possibleStates&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;:State[], initialState: State)&lt;br&gt;&lt;br&gt;+ ValidateStateTimeForZero(stateTime: uint)&lt;br&gt;&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="R7opCH1WQ_tVbO1GXmBw-0" vertex="1">
+          <mxGeometry y="50" width="250" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-4" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=-0.027;exitY=0.337;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.006;entryY=0.243;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-24" target="R7opCH1WQ_tVbO1GXmBw-3" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="330" y="300" as="sourcePoint" />
+            <mxPoint x="490" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-5" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.365;exitY=-0.028;exitDx=0;exitDy=0;entryX=0.805;entryY=1.012;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-5" target="R7opCH1WQ_tVbO1GXmBw-3" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="330" y="300" as="sourcePoint" />
+            <mxPoint x="490" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7opCH1WQ_tVbO1GXmBw-6" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.942;entryY=1.02;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yv8XWIr87M4-oUTZZ-md-15" target="R7opCH1WQ_tVbO1GXmBw-3" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="330" y="300" as="sourcePoint" />
+            <mxPoint x="490" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
