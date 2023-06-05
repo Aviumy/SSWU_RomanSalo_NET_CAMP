@@ -1,0 +1,16 @@
+# American Express # card_number = "3782 8224 6310 005" 
+# American Express # card_number = "348282246310002" 
+# American Express # card_number = "3482 8224 6310 005 " 
+# American Express # card_number = "3482 8224631000" 
+# American Express # card_number = " 358282246310005" 
+# MasterCard # card_number = "5555555555554444
+# MasterCard # card_number = 5355555555554446"
+# MasterCard # card_number = 5155555555554448
+# MasterCard # card_number = "5555943034784444"
+# MasterCard # card_number = "555594303478444"
+# MasterCard # card_number = "5055943034784444"
+# Visa # card_number = "4055943034784444"
+# Visa # card_number = "4055943034785"
+# Visa # card_number = "4055943034787"
+# Visa # card_number = "40559430347870"
+# Visa # card_number = "3055943034787"
