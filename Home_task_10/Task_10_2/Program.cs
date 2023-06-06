@@ -17,9 +17,9 @@
                 new Device(4, "IPhone 17", 16800, (.5f, .9f, .2f)),
                 new Device(5, "TV", 25000, (40, 34, 7)),
                 new Device(6, "Coffee Machine", 4599, (6, 9, 6)),
-                new Clothes(7, "T-Shirt", 400, Size.M),
-                new Clothes(8, "T-Shirt", 400, Size.L),
-                new Clothes(9, "T-Shirt", 400, Size.XL),
+                new Clothes(7, "T-Shirt", 400, ClothingSize.M),
+                new Clothes(8, "T-Shirt", 400, ClothingSize.L),
+                new Clothes(9, "T-Shirt", 400, ClothingSize.XL),
             };
 
             ProductVisitor visitor = new Product.PriceCountVisitor();

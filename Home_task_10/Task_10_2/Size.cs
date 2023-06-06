@@ -1,6 +1,6 @@
 ﻿namespace Task_10_2
 {
-    internal enum Size
+    internal enum ClothingSize
     {
         XS, 
         S,
