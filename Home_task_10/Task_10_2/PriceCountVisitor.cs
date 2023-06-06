@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task_10_2
 {
+    using static PriceCountVisitorConfig;
+
     // Конкретний відвідувач робимо вкладеним класом у Product, щоб не порушувати інкапсуляцію властивостей Product
     internal abstract partial class Product
     {
@@ -14,24 +16,26 @@ namespace Task_10_2
             public void VisitFood(Food food)
             {
                 var daysToExpire = food.ExpiryDate.DayNumber - DateOnly.FromDateTime(DateTime.Now).DayNumber;
-                if (daysToExpire < 3)
+                if (daysToExpire < daysToExpireThreshold)
                 {
-                    food.TotalPrice = food.Price + (3 - daysToExpire) * 5m;
+                    food.TotalPrice = food.Price + (daysToExpireThreshold - daysToExpire) * urgencyPriceMultiplier;
                 }
             }
 
             public void VisitDevice(Device device)
             {
                 var size = device.Size;
-                if (size.width > 15 || size.height > 6 || size.length > 15)
+                if (size.width > widthThreshold ||
+                    size.height > heightThreshold || 
+                    size.length > lengthThreshold)
                 {
-                    device.TotalPrice = device.Price * 1.2m;
+                    device.TotalPrice = device.Price * deviceSizePriceMultiplier;
                 }
             }
 
             public void VisitClothes(Clothes clothes)
             {
-                clothes.TotalPrice = clothes.Price + (int)clothes.Size * 11m;
+                clothes.TotalPrice = clothes.Price + (int)clothes.Size * clothesSizePriceMultiplier;
             }
         }
     }
