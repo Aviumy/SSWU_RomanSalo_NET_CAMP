@@ -8,9 +8,9 @@ namespace Task_10_2
 {
     internal class Clothes : Product
     {
-        public Size Size { get; protected set; }
+        public ClothingSize Size { get; protected set; }
 
-        public Clothes(int id, string name, decimal price, Size size)
+        public Clothes(int id, string name, decimal price, ClothingSize size)
             : base(id, name, price)
         {
             Size = size;
