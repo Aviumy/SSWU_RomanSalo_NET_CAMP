@@ -11,6 +11,11 @@ namespace Task_11_2
         private static string leftFilePath = "../../../task_11_2_temp_left.txt";
         //private static string rightFilePath = "../../../task_11_2_temp_right.txt";
 
+        // Задумка:
+        // - Зчитати першу половину масиву з файлу, посортувати її і записати у темп-файл
+        // - Зчитати другу половину масиву з файлу, посортувати її і залишити у пам'яті
+        // - По черзі брати по одному елементу з пам'яті і з темп-файлу, порівнювати і записувати
+        //   менший елемент у основний файл
         public static void SortFromFile(string arrayFilePath, int length)
         {
             int[] array = new int[length / 2];
