@@ -22,6 +22,7 @@ ALTER TABLE
     "Курсові роботи" ADD CONSTRAINT "Курсові роботи_id_роботи_primary" PRIMARY KEY("id_роботи");
 CREATE TABLE "Спеціальності"(
     "id_спеціальності" BIGINT NOT NULL,
+    "Код" NVARCHAR(255) NOT NULL,
     "Назва" NVARCHAR(255) NOT NULL
 );
 ALTER TABLE
@@ -47,6 +48,7 @@ CREATE TABLE "Студенти"(
     "Прізвище" NVARCHAR(255) NOT NULL,
     "Ім'я" NVARCHAR(255) NOT NULL,
     "По батькові" NVARCHAR(255) NOT NULL,
+    "Курс" TINYINT NOT NULL,
     "id_спеціальності" BIGINT NOT NULL,
     "id_факультету" BIGINT NOT NULL,
     "id_кафедри" BIGINT NULL,
@@ -64,7 +66,6 @@ ALTER TABLE
 CREATE TABLE "Навчальні предмети"(
     "id_предмету" BIGINT NOT NULL,
     "Назва" NVARCHAR(255) NOT NULL,
-    "Скорочена назва" NVARCHAR(255) NOT NULL,
     "К-сть годин" SMALLINT NOT NULL,
     "Іспит/залік" NVARCHAR(255) NOT NULL,
     "id_кафедри" BIGINT NOT NULL
