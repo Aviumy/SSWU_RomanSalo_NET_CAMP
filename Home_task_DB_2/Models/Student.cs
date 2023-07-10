@@ -21,5 +21,16 @@ namespace Home_task_DB_2.Models
         public string Group { get; set; }
 
         public virtual List<Coursework> Courseworks { get; set; }
+
+        public Student() { }
+
+        public Student(int studentId, string firstname, string lastname, string middlename, string group)
+        {
+            StudentId = studentId;
+            Firstname = firstname;
+            Lastname = lastname;
+            Middlename = middlename;
+            Group = group;
+        }
     }
 }

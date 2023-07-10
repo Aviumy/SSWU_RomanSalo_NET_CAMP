@@ -23,5 +23,17 @@ namespace Home_task_DB_2.Models
         public string Cathedra { get; set; }
 
         public virtual List<Coursework> Courseworks { get; set; }
+
+        public Teacher() { }
+
+        public Teacher(int teacherId, string firstname, string lastname, string middlename, string position, string cathedra)
+        {
+            TeacherId = teacherId;
+            Firstname = firstname;
+            Lastname = lastname;
+            Middlename = middlename;
+            Position = position;
+            Cathedra = cathedra;
+        }
     }
 }
