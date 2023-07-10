@@ -24,6 +24,15 @@ namespace Home_task_DB_2.Models
 
         public Student() { }
 
+        public Student(string firstname, string lastname, string middlename, string group)
+        {
+            StudentId = 0;
+            Firstname = firstname;
+            Lastname = lastname;
+            Middlename = middlename;
+            Group = group;
+        }
+
         public Student(int studentId, string firstname, string lastname, string middlename, string group)
         {
             StudentId = studentId;
@@ -31,6 +40,11 @@ namespace Home_task_DB_2.Models
             Lastname = lastname;
             Middlename = middlename;
             Group = group;
+        }
+
+        public override string ToString()
+        {
+            return $"{Lastname} {Firstname} {Middlename}: {Group}";
         }
     }
 }

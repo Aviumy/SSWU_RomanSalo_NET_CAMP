@@ -26,6 +26,16 @@ namespace Home_task_DB_2.Models
 
         public Teacher() { }
 
+        public Teacher(string firstname, string lastname, string middlename, string position, string cathedra)
+        {
+            TeacherId = 0;
+            Firstname = firstname;
+            Lastname = lastname;
+            Middlename = middlename;
+            Position = position;
+            Cathedra = cathedra;
+        }
+
         public Teacher(int teacherId, string firstname, string lastname, string middlename, string position, string cathedra)
         {
             TeacherId = teacherId;
@@ -34,6 +44,11 @@ namespace Home_task_DB_2.Models
             Middlename = middlename;
             Position = position;
             Cathedra = cathedra;
+        }
+
+        public override string ToString()
+        {
+            return $"{Position} {Lastname} {Firstname} {Middlename}: кафедра {Cathedra}";
         }
     }
 }

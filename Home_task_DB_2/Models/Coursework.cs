@@ -28,6 +28,19 @@ namespace Home_task_DB_2.Models
 
         public Coursework() { }
 
+        public Coursework(string title, string workType, string subject, DateTime approvalDate, DateTime presentationDate, byte mark, int? teacherId = null, int? studentId = null)
+        {
+            WorkId = 0;
+            Title = title;
+            WorkType = workType;
+            Subject = subject;
+            ApprovalDate = approvalDate;
+            PresentationDate = presentationDate;
+            Mark = mark;
+            TeacherId = teacherId;
+            StudentId = studentId;
+        }
+
         public Coursework(int workId, string title, string workType, string subject, DateTime approvalDate, DateTime presentationDate, byte mark, int? teacherId = null, int? studentId = null)
         {
             WorkId = workId;
@@ -39,6 +52,11 @@ namespace Home_task_DB_2.Models
             Mark = mark;
             TeacherId = teacherId;
             StudentId = studentId;
+        }
+
+        public override string ToString()
+        {
+            return $"{WorkType} робота з предмету {Subject}\nна тему '{Title}'";
         }
     }
 }
