@@ -210,7 +210,41 @@ namespace Home_task_DB_2
 
         private void CourseworkInfoMenu()
         {
+            Console.WriteLine();
+            Console.WriteLine("Який запит вивести?");
+            Console.WriteLine("1 - Роботи, які ще не здані");
+            Console.WriteLine("2 - Роботи, які 4-курсники здавали минулого року");
+            Console.WriteLine("3 - Студенти, які здали хоча б одну роботу не на відмінно");
+            Console.WriteLine("0 - Назад");
+            Console.Write(">>> ");
 
+            input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            if (input == '1')
+            {
+                courseworkInfoService.AllUnpresentedCourseworks().ForEach(Console.WriteLine);
+                CourseworkInfoMenu();
+            }
+            else if (input == '2')
+            {
+                courseworkInfoService.LastYearCourseworksOf4GradeStudents().ForEach(Console.WriteLine);
+                CourseworkInfoMenu();
+            }
+            else if (input == '3')
+            {
+                courseworkInfoService.StudentsWithLessThan90Mark().ForEach(Console.WriteLine);
+                CourseworkInfoMenu();
+            }
+            else if (input == '0')
+            {
+                MainMenu();
+            }
+            else
+            {
+                Console.WriteLine("Неправильний ввід! Спробуйте ще раз");
+                Console.WriteLine();
+                CourseworkInfoMenu();
+            }
         }
     }
 }
