@@ -38,7 +38,43 @@ namespace Home_task_DB_2
 
         private void MainMenu()
         {
+            Console.WriteLine();
+            Console.WriteLine("З чим працюватимемо?");
+            Console.WriteLine("1 - Студенти");
+            Console.WriteLine("2 - Викладачі");
+            Console.WriteLine("3 - Курсові роботи");
+            Console.WriteLine("4 - Складні запити інформації");
+            Console.WriteLine("0 - Вихід");
+            Console.Write(">>> ");
 
+            input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            if (input == '1')
+            {
+                CrudMenu(typeof(StudentService));
+            }
+            else if (input == '2')
+            {
+                CrudMenu(typeof(TeacherService));
+            }
+            else if (input == '3')
+            {
+                CrudMenu(typeof(CourseworkService));
+            }
+            else if (input == '4')
+            {
+                CourseworkInfoMenu();
+            }
+            else if (input == '0')
+            {
+                Console.WriteLine("Виходимо...");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Неправильний ввід! Спробуйте ще раз");
+                MainMenu();
+            }
         }
 
         private void CrudMenu(Type service)
