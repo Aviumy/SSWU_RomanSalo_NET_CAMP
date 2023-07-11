@@ -1,4 +1,5 @@
-﻿using Home_task_DB_2.Persistence;
+﻿using Home_task_DB_2.Models;
+using Home_task_DB_2.Persistence;
 using Home_task_DB_2.Services;
 using System;
 using System.Collections.Generic;
@@ -138,7 +139,72 @@ namespace Home_task_DB_2
 
         private void CreateMenu(Type service)
         {
+            dynamic serviceObj = ChooseService(service);
+            if (serviceObj == null)
+            {
+                Console.WriteLine("Сталася невідома помилка при виборі сервісу");
+                CrudMenu(service);
+                return;
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Меню додавання об'єкта. Введіть дані:");
+            dynamic newObj = null;
+            if (service == typeof(StudentService))
+            {
+                string lastname = ValidateStringFromConsole("Прізвище: ");
+                string firstname = ValidateStringFromConsole("Ім'я: ");
+                string middlename = ValidateStringFromConsole("По батькові: ");
+                string group = ValidateStringFromConsole("Академ. група: ");
+
+                Student student = new Student
+                {
+                    Lastname = lastname,
+                    Firstname = firstname,
+                    Middlename = middlename,
+                    Group = group
+                };
+                newObj = student;
+            }
+            else
+            {
+                Console.WriteLine("В розробці...");
+                MainMenu();
+                return;
+            }
+
+            Console.WriteLine(newObj);
+            Console.WriteLine("Додати цей об'єкт в БД?");
+            do
+            {
+                Console.WriteLine("Натисніть Y для підтвердження, або N для відміни");
+                Console.Write(">>> ");
+                input = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+            } while (!"yYnN".Contains(input));
+
+            if ("yY".Contains(input))
+            {
+                try
+                {
+                    serviceObj.Create(newObj);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Сталася помилка при додаванні в БД");
+                    Console.WriteLine(e.Message);
+                    CrudMenu(service);
+                    return;
+                }
+                serviceObj.SaveChanges();
+                Console.WriteLine("Об'єкт успішно додано");
+                CrudMenu(service);
+            }
+            else
+            {
+                Console.WriteLine("Відміна, об'єкт не додано");
+                CrudMenu(service);
+            }
         }
 
         private void ReadAllMenu(Type service)
