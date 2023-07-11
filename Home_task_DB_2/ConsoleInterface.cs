@@ -330,5 +330,18 @@ namespace Home_task_DB_2
             }
             return serviceObj;
         }
+
+        private string ValidateStringFromConsole(string message)
+        {
+            Console.Write(message);
+            string input = Console.ReadLine().Trim();
+            while (input == string.Empty)
+            {
+                Console.WriteLine("Не можна вводити пустий рядок");
+                Console.Write(message);
+                input = Console.ReadLine().Trim();
+            }
+            return input;
+        }
     }
 }
