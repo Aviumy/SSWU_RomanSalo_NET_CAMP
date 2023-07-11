@@ -160,7 +160,42 @@ namespace Home_task_DB_2
 
         private void ReadOneMenu(Type service)
         {
+            Console.WriteLine();
+            Console.WriteLine("Отримання одного об'єкта");
+            Console.WriteLine("Введіть id об'єкта (ціле число) і натисність Enter");
+            Console.WriteLine("Щоб вийти, просто натисніть Enter без вводу");
+            Console.Write(">>> ");
+            string idInput = Console.ReadLine().Trim();
+            if (idInput == string.Empty)
+            {
+                CrudMenu(service);
+                return;
+            }
 
+            int id;
+            if (int.TryParse(idInput, out id))
+            {
+                dynamic result = null;
+                if (service == typeof(StudentService))
+                {
+                    result = studentService.ReadOne(id);
+                }
+                else if (service == typeof(TeacherService))
+                {
+                    result = teacherService.ReadOne(id);
+                }
+                else if (service == typeof(CourseworkService))
+                {
+                    result = courseworkService.ReadOne(id);
+                }
+                Console.WriteLine(result ?? "Результат за таким id не знайдено");
+                ReadOneMenu(service);
+            }
+            else
+            {
+                Console.WriteLine("Не вдалось конвертувати ввід в число. Введіть ціле число");
+                ReadOneMenu(service);
+            }
         }
 
         private void UpdateMenu(Type service)
