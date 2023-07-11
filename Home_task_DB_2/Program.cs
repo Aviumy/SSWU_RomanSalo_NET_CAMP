@@ -14,7 +14,12 @@ namespace Home_task_DB_2
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
+            ConsoleInterface app = new ConsoleInterface();
+            app.Run();
+        }
 
+        static void SimpleTest()
+        {
             UniversityDbContext context = new UniversityDbContext();
 
             StudentService studentService = new StudentService(context);

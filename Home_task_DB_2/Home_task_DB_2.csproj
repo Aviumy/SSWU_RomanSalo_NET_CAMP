@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleInterface.cs" />
     <Compile Include="Interfaces\ICrudService.cs" />
     <Compile Include="Migrations\202307092320042_Initial.cs" />
     <Compile Include="Migrations\202307092320042_Initial.designer.cs">
