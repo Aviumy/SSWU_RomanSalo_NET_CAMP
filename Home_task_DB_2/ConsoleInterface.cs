@@ -205,20 +205,8 @@ namespace Home_task_DB_2
 
         private void DeleteMenu(Type service)
         {
-            dynamic serviceObj = null;
-            if (service == typeof(StudentService))
-            {
-                serviceObj = studentService;
-            }
-            else if (service == typeof(TeacherService))
-            {
-                serviceObj = teacherService;
-            }
-            else if (service == typeof(CourseworkService))
-            {
-                serviceObj = courseworkService;
-            }
-            else
+            dynamic serviceObj = ChooseService(service);
+            if (serviceObj == null)
             {
                 Console.WriteLine("Сталася невідома помилка при виборі сервісу");
                 CrudMenu(service);
@@ -323,6 +311,24 @@ namespace Home_task_DB_2
                 Console.WriteLine();
                 CourseworkInfoMenu();
             }
+        }
+
+        private dynamic ChooseService(Type service)
+        {
+            dynamic serviceObj = null;
+            if (service == typeof(StudentService))
+            {
+                serviceObj = studentService;
+            }
+            else if (service == typeof(TeacherService))
+            {
+                serviceObj = teacherService;
+            }
+            else if (service == typeof(CourseworkService))
+            {
+                serviceObj = courseworkService;
+            }
+            return serviceObj;
         }
     }
 }
