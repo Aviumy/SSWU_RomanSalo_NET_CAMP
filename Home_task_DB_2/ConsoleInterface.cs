@@ -79,7 +79,61 @@ namespace Home_task_DB_2
 
         private void CrudMenu(Type service)
         {
+            string serviceName = "'невідомий'";
+            if (service == typeof(StudentService))
+            {
+                serviceName = "студентів";
+            }
+            else if (service == typeof(TeacherService))
+            {
+                serviceName = "викладачів";
+            }
+            else if (service == typeof(CourseworkService))
+            {
+                serviceName = "курсових робіт";
+            }
 
+            Console.WriteLine();
+            Console.WriteLine($"Вибрано сервіс {serviceName}. Яку дію виконати?");
+            Console.WriteLine("1 - Створити");
+            Console.WriteLine("2 - Прочитати все");
+            Console.WriteLine("3 - Прочитати одне");
+            Console.WriteLine("4 - Змінити");
+            Console.WriteLine("5 - Видалити");
+            Console.WriteLine("0 - Назад");
+            Console.Write(">>> ");
+
+            input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            if (input == '1')
+            {
+                CreateMenu(service);
+            }
+            else if (input == '2')
+            {
+                ReadAllMenu(service);
+            }
+            else if (input == '3')
+            {
+                ReadOneMenu(service);
+            }
+            else if (input == '4')
+            {
+                UpdateMenu(service);
+            }
+            else if (input == '5')
+            {
+                DeleteMenu(service);
+            }
+            else if (input == '0')
+            {
+                MainMenu();
+            }
+            else
+            {
+                Console.WriteLine("Неправильний ввід! Спробуйте ще раз");
+                CrudMenu(service);
+            }
         }
 
         private void CreateMenu(Type service)
