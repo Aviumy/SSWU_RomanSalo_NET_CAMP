@@ -266,7 +266,122 @@ namespace Home_task_DB_2
 
         private void UpdateMenu(Type service)
         {
+            dynamic serviceObj = ChooseService(service);
+            if (serviceObj == null)
+            {
+                Console.WriteLine("Сталася невідома помилка при виборі сервісу");
+                CrudMenu(service);
+                return;
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Меню редагування об'єкта");
+            Console.WriteLine("Введіть id об'єкта (ціле число) і натисність Enter");
+            Console.WriteLine("Щоб вийти, просто натисніть Enter без вводу");
+            Console.Write(">>> ");
+            string idInput = Console.ReadLine().Trim();
+            if (idInput == string.Empty)
+            {
+                CrudMenu(service);
+                return;
+            }
+
+            int id;
+            if (int.TryParse(idInput, out id))
+            {
+                dynamic obj = serviceObj?.ReadOne(id);
+                if (obj != null)
+                {
+                    Console.WriteLine(obj);
+                    Console.WriteLine("Редагувати цей об'єкт?");
+                    do
+                    {
+                        Console.WriteLine("Натисніть Y для підтвердження, або N для відміни");
+                        Console.Write(">>> ");
+                        input = Console.ReadKey().KeyChar;
+                        Console.WriteLine();
+                    } while (!"yYnN".Contains(input));
+
+                    if ("yY".Contains(input))
+                    {
+                        dynamic editedObj = null;
+                        if (obj is Student)
+                        {
+                            string lastname = ValidateStringFromConsole("Прізвище: ");
+                            string firstname = ValidateStringFromConsole("Ім'я: ");
+                            string middlename = ValidateStringFromConsole("По батькові: ");
+                            string group = ValidateStringFromConsole("Академ. група: ");
+
+                            Student student = new Student
+                            {
+                                StudentId = obj.StudentId,
+                                Lastname = lastname,
+                                Firstname = firstname,
+                                Middlename = middlename,
+                                Group = group
+                            };
+                            editedObj = student;
+                        }
+                        else
+                        {
+                            Console.WriteLine("В розробці...");
+                            MainMenu();
+                            return;
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("Старий об'єкт:");
+                        Console.WriteLine(obj);
+                        Console.WriteLine("Новий об'єкт:");
+                        Console.WriteLine(editedObj);
+                        Console.WriteLine("Прийняти зміни?");
+                        do
+                        {
+                            Console.WriteLine("Натисніть Y для підтвердження, або N для відміни");
+                            Console.Write(">>> ");
+                            input = Console.ReadKey().KeyChar;
+                            Console.WriteLine();
+                        } while (!"yYnN".Contains(input));
+
+                        if ("yY".Contains(input))
+                        {
+                            try
+                            {
+                                serviceObj.Update(id, editedObj);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Сталася помилка при редагуванні");
+                                Console.WriteLine(e.Message);
+                                UpdateMenu(service);
+                                return;
+                            }
+                            serviceObj.SaveChanges();
+                            Console.WriteLine("Об'єкт успішно відредаговано");
+                            UpdateMenu(service);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Відміна, об'єкт не змінено");
+                            UpdateMenu(service);
+                        }
+                    }
+                    else
+                    {
+                        UpdateMenu(service);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Результат за таким id не знайдено");
+                    UpdateMenu(service);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Не вдалось конвертувати ввід в число. Введіть ціле число");
+                UpdateMenu(service);
+            }
         }
 
         private void DeleteMenu(Type service)
