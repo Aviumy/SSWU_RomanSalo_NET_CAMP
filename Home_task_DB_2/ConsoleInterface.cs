@@ -143,7 +143,19 @@ namespace Home_task_DB_2
 
         private void ReadAllMenu(Type service)
         {
-
+            if (service == typeof(StudentService))
+            {
+                studentService.ReadAll().ForEach(Console.WriteLine);
+            }
+            else if (service == typeof(TeacherService))
+            {
+                teacherService.ReadAll().ForEach(Console.WriteLine);
+            }
+            else if (service == typeof(CourseworkService))
+            {
+                courseworkService.ReadAll().ForEach(Console.WriteLine);
+            }
+            CrudMenu(service);
         }
 
         private void ReadOneMenu(Type service)
