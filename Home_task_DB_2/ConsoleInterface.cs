@@ -205,7 +205,85 @@ namespace Home_task_DB_2
 
         private void DeleteMenu(Type service)
         {
+            dynamic serviceObj = null;
+            if (service == typeof(StudentService))
+            {
+                serviceObj = studentService;
+            }
+            else if (service == typeof(TeacherService))
+            {
+                serviceObj = teacherService;
+            }
+            else if (service == typeof(CourseworkService))
+            {
+                serviceObj = courseworkService;
+            }
+            else
+            {
+                Console.WriteLine("Сталася невідома помилка при виборі сервісу");
+                CrudMenu(service);
+                return;
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Меню видалення одного об'єкта");
+            Console.WriteLine("Введіть id об'єкта (ціле число) і натисність Enter");
+            Console.WriteLine("Щоб вийти, просто натисніть Enter без вводу");
+            Console.Write(">>> ");
+            string idInput = Console.ReadLine().Trim();
+            if (idInput == string.Empty)
+            {
+                CrudMenu(service);
+                return;
+            }
+
+            int id;
+            if (int.TryParse(idInput, out id))
+            {
+                dynamic result = serviceObj?.ReadOne(id);
+
+                if (result != null)
+                {
+                    Console.WriteLine(result);
+                    Console.WriteLine("Видалити цей об'єкт?");
+                    Console.WriteLine("Натисніть лат. x для підтвердження, або будь-яку іншу кнопку для відміни");
+                    Console.Write(">>> ");
+                    input = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+                    if ("xX".Contains(input))
+                    {
+                        try
+                        {
+                            serviceObj.Delete(id);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Сталася помилка при видаленні з БД");
+                            Console.WriteLine(e.Message);
+                            DeleteMenu(service);
+                            return;
+                        }
+                        serviceObj.SaveChanges();
+                        Console.WriteLine("Об'єкт видалено");
+                        DeleteMenu(service);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Відміна, об'єкт залишено");
+                        DeleteMenu(service);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Результат за таким id не знайдено");
+                    DeleteMenu(service);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Не вдалось конвертувати ввід в число. Введіть ціле число");
+                DeleteMenu(service);
+            }
         }
 
         private void CourseworkInfoMenu()
