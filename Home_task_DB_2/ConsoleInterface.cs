@@ -567,5 +567,80 @@ namespace Home_task_DB_2
             }
             return input;
         }
+
+        private DateTime ValidateDateFromConsole(string message)
+        {
+            DateTime date = default;
+            do
+            {
+                Console.Write(message);
+                string input = Console.ReadLine().Trim();
+                if (!DateTime.TryParse(input, out date))
+                {
+                    Console.WriteLine("Не вдалось конвертувати ввід в дату");
+                }
+            } while (date == default);
+            return date;
+        }
+
+        private byte ValidateMarkFromConsole(string message)
+        {
+            bool isResultValid = false;
+            byte result = 0;
+            do
+            {
+                Console.Write(message);
+                string input = Console.ReadLine().Trim();
+                if (!byte.TryParse(input, out result))
+                {
+                    Console.WriteLine("Не вдалось конвертувати ввід в число");
+                }
+                else if (result > 100)
+                {
+                    Console.WriteLine("Оцінка повинна бути в межах від 0 до 100");
+                }
+                else
+                {
+                    isResultValid = true;
+                }
+            } while (!isResultValid);
+            return result;
+        }
+
+        private int? ValidateIdFromConsole(string message, Type service)
+        {
+            bool isResultValid = false;
+            dynamic serviceObj = ChooseService(service);
+            int id = 0;
+            if (serviceObj != null)
+            {
+                do
+                {
+                    Console.Write(message);
+                    string input = Console.ReadLine().Trim();
+                    if (input == string.Empty)
+                    {
+                        return null;
+                    }
+                    else if (!int.TryParse(input, out id))
+                    {
+                        Console.WriteLine("Не вдалось конвертувати ввід в число");
+                    }
+                    else if (serviceObj.ReadOne(id) == null)
+                    {
+                        Console.WriteLine("Результат за таким id не знайдено");
+                    }
+                    else
+                    {
+                        isResultValid = true;
+                    }
+                } while (!isResultValid);
+            }
+            else
+            {
+                Console.WriteLine("Сталася невідома помилка при виборі сервісу");
+            }
+            return id;
+        }
     }
 }
