@@ -462,6 +462,7 @@ namespace Home_task_DB_2
             Console.WriteLine("1 - Роботи, які ще не здані");
             Console.WriteLine("2 - Роботи, які 4-курсники здавали минулого року");
             Console.WriteLine("3 - Студенти, які здали хоча б одну роботу не на відмінно");
+            Console.WriteLine("4 - Список зданих робіт, з іменами студентів та їх керівників");
             Console.WriteLine("0 - Назад");
             Console.Write(">>> ");
 
@@ -480,6 +481,11 @@ namespace Home_task_DB_2
             else if (input == '3')
             {
                 courseworkInfoService.StudentsWithLessThan90Mark().ForEach(Console.WriteLine);
+                CourseworkInfoMenu();
+            }
+            else if (input == '4')
+            {
+                courseworkInfoService.CourseworksWithStudentsAndTeachersNames().ForEach(Console.WriteLine);
                 CourseworkInfoMenu();
             }
             else if (input == '0')

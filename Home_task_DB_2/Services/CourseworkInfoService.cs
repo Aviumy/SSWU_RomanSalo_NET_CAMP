@@ -57,5 +57,34 @@ namespace Home_task_DB_2.Services
 
             return query.ToList();
         }
+
+        // Виведення курсових робіт разом з інформацією про студентів та їх керівників
+        public List<string> CourseworksWithStudentsAndTeachersNames()
+        {
+            var query = from w in _context.Courseworks
+                        join s in _context.Students on w.StudentId equals s.StudentId
+                        join t in _context.Teachers on w.TeacherId equals t.TeacherId
+                        where w.Mark != 0
+                        select new
+                        {
+                            Work = w,
+                            StudentLastname = s.Lastname,
+                            StudentFirstname = s.Firstname,
+                            StudentGroup = s.Group,
+                            TeacherLastname = t.Lastname,
+                            TeacherFirstname = t.Firstname,
+                            TeacherPosition = t.Position,
+                        };
+            List<string> result = new List<string>();
+            foreach (var item in query)
+            {
+                StringBuilder itemStr = new StringBuilder();
+                itemStr.AppendLine($"{item.Work.ToString()} ({item.Work.Mark} б.)");
+                itemStr.AppendLine($"Виконав: {item.StudentLastname} {item.StudentFirstname} {item.StudentGroup}");
+                itemStr.AppendLine($"Керівник: {item.TeacherPosition} {item.TeacherLastname} {item.TeacherFirstname}");
+                result.Add(itemStr.ToString());
+            }
+            return result;
+        }
     }
 }
