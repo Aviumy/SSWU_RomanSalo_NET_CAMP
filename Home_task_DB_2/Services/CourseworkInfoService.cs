@@ -67,7 +67,8 @@ namespace Home_task_DB_2.Services
                         where w.Mark != 0
                         select new
                         {
-                            Work = w,
+                            WorkTitle = w.Title,
+                            WorkMark = w.Mark,
                             StudentLastname = s.Lastname,
                             StudentFirstname = s.Firstname,
                             StudentGroup = s.Group,
@@ -79,7 +80,7 @@ namespace Home_task_DB_2.Services
             foreach (var item in query)
             {
                 StringBuilder itemStr = new StringBuilder();
-                itemStr.AppendLine($"{item.Work.ToString()} ({item.Work.Mark} б.)");
+                itemStr.AppendLine($"{item.WorkTitle} ({item.WorkMark} б.)");
                 itemStr.AppendLine($"Виконав: {item.StudentLastname} {item.StudentFirstname} {item.StudentGroup}");
                 itemStr.AppendLine($"Керівник: {item.TeacherPosition} {item.TeacherLastname} {item.TeacherFirstname}");
                 result.Add(itemStr.ToString());
