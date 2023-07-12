@@ -166,6 +166,24 @@ namespace Home_task_DB_2
                 };
                 newObj = student;
             }
+            else if (service == typeof(TeacherService))
+            {
+                string lastname = ValidateStringFromConsole("Прізвище: ");
+                string firstname = ValidateStringFromConsole("Ім'я: ");
+                string middlename = ValidateStringFromConsole("По батькові: ");
+                string position = ValidateStringFromConsole("Посада: ");
+                string cathedra = ValidateStringFromConsole("Кафедра: ");
+
+                Teacher teacher = new Teacher
+                {
+                    Lastname = lastname,
+                    Firstname = firstname,
+                    Middlename = middlename,
+                    Position = position,
+                    Cathedra = cathedra,
+                };
+                newObj = teacher;
+            }
             else
             {
                 Console.WriteLine("В розробці...");
@@ -321,6 +339,25 @@ namespace Home_task_DB_2
                                 Group = group
                             };
                             editedObj = student;
+                        }
+                        else if (obj is Teacher)
+                        {
+                            string lastname = ValidateStringFromConsole("Прізвище: ");
+                            string firstname = ValidateStringFromConsole("Ім'я: ");
+                            string middlename = ValidateStringFromConsole("По батькові: ");
+                            string position = ValidateStringFromConsole("Посада: ");
+                            string cathedra = ValidateStringFromConsole("Кафедра: ");
+
+                            Teacher teacher = new Teacher
+                            {
+                                TeacherId = obj.TeacherId,
+                                Lastname = lastname,
+                                Firstname = firstname,
+                                Middlename = middlename,
+                                Position = position,
+                                Cathedra = cathedra,
+                            };
+                            editedObj = teacher;
                         }
                         else
                         {
