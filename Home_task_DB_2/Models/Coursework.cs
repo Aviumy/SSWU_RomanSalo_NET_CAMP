@@ -56,7 +56,13 @@ namespace Home_task_DB_2.Models
 
         public override string ToString()
         {
-            return $"{WorkType} робота з предмету {Subject}\nна тему '{Title}'";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"[{WorkId}] {WorkType} робота з предмету {Subject} на тему '{Title}' ({(Mark != 0 ? $"{Mark} б." : "не здано")})");
+            sb.Append($"Затверджено: {ApprovalDate.ToString("yyyy.MM.dd")}, ");
+            sb.AppendLine($"Здати: {PresentationDate.ToString("yyyy.MM.dd")}, ");
+            sb.AppendLine($"Id виконуючого: {StudentId.ToString() ?? "-"}");
+            sb.Append($"Id керівника: {TeacherId.ToString() ?? "-"}");
+            return sb.ToString();
         }
     }
 }

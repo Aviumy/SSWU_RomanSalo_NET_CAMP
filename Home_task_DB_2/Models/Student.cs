@@ -44,7 +44,7 @@ namespace Home_task_DB_2.Models
 
         public override string ToString()
         {
-            return $"{Lastname} {Firstname} {Middlename}: {Group}";
+            return $"[{StudentId}] {Lastname} {Firstname} {Middlename}: {Group}";
         }
     }
 }

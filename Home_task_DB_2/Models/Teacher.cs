@@ -48,7 +48,7 @@ namespace Home_task_DB_2.Models
 
         public override string ToString()
         {
-            return $"{Position} {Lastname} {Firstname} {Middlename}: кафедра {Cathedra}";
+            return $"[{TeacherId}] {Position} {Lastname} {Firstname} {Middlename}: кафедра {Cathedra}";
         }
     }
 }
