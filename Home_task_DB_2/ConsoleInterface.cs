@@ -377,11 +377,30 @@ namespace Home_task_DB_2
                             };
                             editedObj = teacher;
                         }
-                        else
+                        else if (obj is Coursework)
                         {
-                            Console.WriteLine("В розробці...");
-                            MainMenu();
-                            return;
+                            string title = ValidateStringFromConsole("Назва роботи: ");
+                            string workType = ValidateStringFromConsole("Тип роботи: ");
+                            string subject = ValidateStringFromConsole("Предмет: ");
+                            DateTime approvalDate = ValidateDateFromConsole("Дата затвердження: ");
+                            DateTime presentationDate = ValidateDateFromConsole("Дата здачі: ");
+                            byte mark = ValidateMarkFromConsole("Оцінка за роботу (від 0 до 100): ");
+                            int? teacherId = ValidateIdFromConsole("Id викладача-керівника роботи (можна лишити пустим): ", typeof(TeacherService));
+                            int? studentId = ValidateIdFromConsole("Id студента, який виконував роботу (можна лишити пустим): ", typeof(StudentService));
+
+                            Coursework coursework = new Coursework
+                            {
+                                WorkId = obj.WorkId,
+                                Title = title,
+                                WorkType = workType,
+                                Subject = subject,
+                                ApprovalDate = approvalDate,
+                                PresentationDate = presentationDate,
+                                Mark = mark,
+                                TeacherId = teacherId,
+                                StudentId = studentId,
+                            };
+                            editedObj = coursework;
                         }
 
                         Console.WriteLine();
